@@ -14,62 +14,194 @@
     }
     .container { max-width: 1280px; margin: 0 auto; padding: 16px; }
     .header {
-      position: sticky; top: 0; z-index: 30; background: rgba(255,255,255,0.95);
-      backdrop-filter: blur(8px); border-bottom: 1px solid #e5e7eb;
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid #e5e7eb;
     }
     .header-inner {
-      max-width: 1280px; margin: 0 auto; padding: 14px 16px; display: flex;
-      align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
     }
-    .brand-wrap { display: flex; align-items: center; gap: 12px; min-width: 0; }
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
     .brand-icon {
-      width: 46px; height: 46px; border-radius: 16px; background: #111827; color: white;
-      display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 800; flex-shrink: 0;
+      width: 46px;
+      height: 46px;
+      border-radius: 16px;
+      background: #111827;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      font-weight: 800;
+      flex-shrink: 0;
     }
     .brand-title { font-weight: 800; font-size: 18px; }
     .brand-subtitle { color: #64748b; font-size: 12px; margin-top: 4px; }
-    .nav { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
-    .btn, .zone-card, .card-button {
-      cursor: pointer; transition: all 0.2s ease; border: 1px solid #d1d5db;
-      background: white; color: #111827; border-radius: 14px; padding: 10px 14px; font-size: 14px; font-weight: 600;
+
+    .nav {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
     }
-    .btn.active, .zone-card.active { background: #111827; color: white; border-color: #111827; }
-    .hero-grid { display: grid; grid-template-columns: minmax(0,1.2fr) minmax(320px,0.8fr); gap: 20px; margin-top: 12px; }
+    .btn, .zone-card, .card-button {
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: 1px solid #d1d5db;
+      background: white;
+      color: #111827;
+      border-radius: 14px;
+      padding: 10px 14px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .btn.active, .zone-card.active {
+      background: #111827;
+      color: white;
+      border-color: #111827;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0,1.2fr) minmax(320px,0.8fr);
+      gap: 20px;
+      margin-top: 12px;
+    }
     .panel {
-      background: white; border: 1px solid #e5e7eb; border-radius: 28px; padding: 24px;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 28px;
+      padding: 24px;
       box-shadow: 0 8px 30px rgba(15, 23, 42, 0.04);
     }
     .tag {
-      display: inline-flex; align-items: center; gap: 8px; border-radius: 999px; background: #f1f5f9;
-      color: #475569; padding: 8px 14px; font-size: 12px; font-weight: 700; margin-bottom: 18px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 999px;
+      background: #f1f5f9;
+      color: #475569;
+      padding: 8px 14px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 18px;
     }
-    .hero-title { font-size: 44px; line-height: 1.1; margin: 0; font-weight: 900; }
-    .hero-desc, .section-desc, .footer-desc, .contact-desc { color: #475569; line-height: 1.8; }
+    .hero-title {
+      font-size: 44px;
+      line-height: 1.1;
+      margin: 0;
+      font-weight: 900;
+    }
+    .hero-desc, .section-desc, .footer-desc, .contact-desc {
+      color: #475569;
+      line-height: 1.8;
+    }
     .hero-desc { margin-top: 16px; font-size: 16px; }
-    .stats { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 22px; }
-    .stat { border: 1px solid #e5e7eb; background: #f8fafc; border-radius: 18px; padding: 14px 16px; min-width: 120px; }
-    .stat-label { font-size: 12px; color: #64748b; margin-bottom: 6px; }
-    .stat-value { font-size: 24px; font-weight: 900; }
 
-    .control-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
-    .control-label { font-size: 14px; font-weight: 700; margin-bottom: 10px; color: #111827; }
+    .stats {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 22px;
+    }
+    .stat {
+      border: 1px solid #e5e7eb;
+      background: #f8fafc;
+      border-radius: 18px;
+      padding: 14px 16px;
+      min-width: 120px;
+    }
+    .stat-label {
+      font-size: 12px;
+      color: #64748b;
+      margin-bottom: 6px;
+    }
+    .stat-value {
+      font-size: 24px;
+      font-weight: 900;
+    }
+
+    .control-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    .control-label {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: #111827;
+    }
     .search-input {
-      width: 100%; border: 1px solid #d1d5db; border-radius: 16px; padding: 12px 14px; font-size: 14px; outline: none;
+      width: 100%;
+      border: 1px solid #d1d5db;
+      border-radius: 16px;
+      padding: 12px 14px;
+      font-size: 14px;
+      outline: none;
     }
 
     .section { margin-top: 28px; }
-    .section-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; flex-wrap: wrap; }
-    .section-title { font-size: 28px; font-weight: 900; margin: 0; }
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .section-title {
+      font-size: 28px;
+      font-weight: 900;
+      margin: 0;
+    }
 
-    .zone-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-top: 16px; }
+    .zone-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+    }
     .zone-card {
-      text-align: left; background: white; border-radius: 20px; padding: 16px;
+      text-align: left;
+      background: white;
+      border-radius: 20px;
+      padding: 16px;
       box-shadow: 0 4px 18px rgba(15, 23, 42, 0.05);
     }
-    .zone-small { font-size: 12px; color: #64748b; }
-    .zone-big { font-size: 22px; font-weight: 900; margin-top: 8px; line-height: 1.25; }
-    .zone-text { font-size: 14px; color: #475569; margin-top: 10px; }
-    .zone-card.active .zone-small, .zone-card.active .zone-text { color: rgba(255,255,255,0.84); }
+    .zone-small {
+      font-size: 12px;
+      color: #64748b;
+    }
+    .zone-big {
+      font-size: 22px;
+      font-weight: 900;
+      margin-top: 8px;
+      line-height: 1.25;
+    }
+    .zone-text {
+      font-size: 14px;
+      color: #475569;
+      margin-top: 10px;
+    }
+    .zone-card.active .zone-small,
+    .zone-card.active .zone-text {
+      color: rgba(255,255,255,0.84);
+    }
 
     .products-grid {
       display: grid;
@@ -77,63 +209,195 @@
       gap: 16px;
       margin-top: 16px;
     }
-    .products-grid.single { grid-template-columns: 1fr; }
+    .products-grid.single {
+      grid-template-columns: 1fr;
+    }
 
     .product-card {
-      background: white; border: 1px solid #e5e7eb; border-radius: 20px; overflow: hidden;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 20px;
+      overflow: hidden;
       box-shadow: 0 4px 18px rgba(15, 23, 42, 0.05);
     }
-    .product-image-wrap { position: relative; width: 100%; aspect-ratio: 3 / 4; background: #f1f5f9; overflow: hidden; }
-    .product-image { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .badge-wrap { position: absolute; top: 12px; left: 12px; display: flex; gap: 8px; flex-wrap: wrap; }
-    .badge { padding: 5px 10px; border-radius: 999px; font-size: 12px; font-weight: 700; }
-    .badge.dark { background: rgba(17,24,39,0.9); color: white; }
-    .badge.light { background: rgba(255,255,255,0.92); color: #111827; border: 1px solid rgba(229,231,235,0.9); }
-
-    .product-body { padding: 16px; display: grid; gap: 14px; }
-    .product-top { display: flex; justify-content: space-between; gap: 12px; }
-    .mini-label { font-size: 12px; color: #64748b; margin-bottom: 4px; }
-    .product-code { font-size: 16px; font-weight: 700; }
-    .product-price { font-size: 18px; font-weight: 800; text-align: right; line-height: 1.3; }
-
-    .color-list { display: none; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
-    .color-list.open { display: flex; }
-    .color-pill {
-      display: inline-flex; align-items: center; gap: 8px; border: 1px solid #e5e7eb; border-radius: 999px;
-      padding: 6px 10px; font-size: 12px; color: #334155; background: white;
+    .product-image-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      background: #f1f5f9;
+      overflow: hidden;
     }
-    .color-dot { width: 12px; height: 12px; border-radius: 999px; border: 1px solid rgba(0,0,0,0.12); display: inline-block; }
+    .product-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .badge-wrap {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .badge {
+      padding: 5px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .badge.dark {
+      background: rgba(17,24,39,0.9);
+      color: white;
+    }
+    .badge.light {
+      background: rgba(255,255,255,0.92);
+      color: #111827;
+      border: 1px solid rgba(229,231,235,0.9);
+    }
+
+    .product-body {
+      padding: 16px;
+      display: grid;
+      gap: 14px;
+    }
+    .product-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .mini-label {
+      font-size: 12px;
+      color: #64748b;
+      margin-bottom: 4px;
+    }
+    .product-code {
+      font-size: 16px;
+      font-weight: 700;
+    }
+    .product-price {
+      font-size: 18px;
+      font-weight: 800;
+      text-align: right;
+      line-height: 1.3;
+    }
+
+    .color-list {
+      display: none;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+    .color-list.open {
+      display: flex;
+    }
+    .color-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid #e5e7eb;
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 12px;
+      color: #334155;
+      background: white;
+    }
+    .color-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(0,0,0,0.12);
+      display: inline-block;
+    }
     .color-toggle {
-      display: inline-flex; align-items: center; justify-content: center; border: 1px solid #d1d5db;
-      border-radius: 12px; padding: 8px 12px; background: #fff; color: #111827; font-size: 13px; font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #d1d5db;
+      border-radius: 12px;
+      padding: 8px 12px;
+      background: #fff;
+      color: #111827;
+      font-size: 13px;
+      font-weight: 700;
       cursor: pointer;
     }
 
     .card-button {
-      width: 100%; border: 0; background: #111827; color: white; border-radius: 14px; padding: 12px 14px;
-      font-size: 14px; font-weight: 700;
-    }
-    .empty {
-      background: white; border: 1px dashed #cbd5e1; border-radius: 24px; padding: 40px; text-align: center; color: #64748b; margin-top: 16px;
+      width: 100%;
+      border: 0;
+      background: #111827;
+      color: white;
+      border-radius: 14px;
+      padding: 12px 14px;
+      font-size: 14px;
+      font-weight: 700;
     }
 
-    .footer { border-top: 1px solid #e5e7eb; background: white; margin-top: 40px; }
-    .footer-grid {
-      max-width: 1280px; margin: 0 auto; padding: 16px; display: grid; grid-template-columns: minmax(0,1fr) minmax(320px,420px);
-      gap: 20px; align-items: center;
+    .empty {
+      background: white;
+      border: 1px dashed #cbd5e1;
+      border-radius: 24px;
+      padding: 40px;
+      text-align: center;
+      color: #64748b;
+      margin-top: 16px;
     }
-    .contact-box { background: #f8fafc; border: 1px solid #e5e7eb; border-radius: 24px; padding: 18px; }
-    .contact-title { font-weight: 800; font-size: 16px; }
-    .contact-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+
+    .footer {
+      border-top: 1px solid #e5e7eb;
+      background: white;
+      margin-top: 40px;
+    }
+    .footer-grid {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 16px;
+      display: grid;
+      grid-template-columns: minmax(0,1fr) minmax(320px,420px);
+      gap: 20px;
+      align-items: center;
+    }
+    .contact-box {
+      background: #f8fafc;
+      border: 1px solid #e5e7eb;
+      border-radius: 24px;
+      padding: 18px;
+    }
+    .contact-title {
+      font-weight: 800;
+      font-size: 16px;
+    }
+    .contact-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
     .contact-tag {
-      display: inline-flex; align-items: center; border: 1px solid #d1d5db; border-radius: 999px; padding: 7px 12px;
-      background: white; font-size: 13px; font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid #d1d5db;
+      border-radius: 999px;
+      padding: 7px 12px;
+      background: white;
+      font-size: 13px;
+      font-weight: 700;
     }
 
     .breadcrumb {
-      display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 12px; padding: 0 2px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+      padding: 0 2px;
     }
-    .breadcrumb-text { font-size: 14px; color: #64748b; }
+    .breadcrumb-text {
+      font-size: 14px;
+      color: #64748b;
+    }
 
     .page-view { display: none; }
     .page-view.active { display: block; }
@@ -143,13 +407,29 @@
     body.category-mode .only-category { display: block !important; }
 
     .lang-popup {
-      position: absolute; top: calc(100% + 8px); right: 0; background: #fff; border: 1px solid #e5e7eb;
-      border-radius: 16px; padding: 8px; box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12); display: none; min-width: 160px;
+      position: absolute;
+      top: calc(100% + 8px);
+      right: 0;
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      padding: 8px;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
+      display: none;
+      min-width: 160px;
     }
     .lang-popup.open { display: block; }
     .lang-option {
-      width: 100%; border: 0; background: transparent; text-align: left; padding: 10px 12px; border-radius: 10px;
-      font-size: 14px; font-weight: 700; cursor: pointer; color: #111827;
+      width: 100%;
+      border: 0;
+      background: transparent;
+      text-align: left;
+      padding: 10px 12px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      color: #111827;
     }
     .lang-option:hover { background: #f8fafc; }
     .lang-wrap { position: relative; }
@@ -338,9 +618,8 @@
         currency: "RMB",
         soldToday: "今日已售",
         addressTitle: "档口位置",
-        addressText: "广州市荔湾区十三行路 1 号 新中国大厦 6 楼 A601B档"
-        contactHint: "电话 / Zalo：0708480027",
-        phoneLabel: "电话",
+        addressText: "广州市荔湾区十三行路 1 号 新中国大厦 6 楼 A601B档",
+        phoneLabel: "电话"
       },
       vi: {
         brand: "Kho Mẫu Áo Thun",
@@ -367,7 +646,6 @@
         productDisplayDesc: "Đây là toàn bộ mẫu trong khu giá hiện tại.",
         noData: "Không tìm thấy mẫu phù hợp",
         contactHint: "Điện thoại / Zalo: 0708480027",
-        phoneLabel: "Điện thoại",
         featured: "Nổi bật",
         newest: "Mới",
         zoneTitle: "Khu giá",
@@ -379,7 +657,8 @@
         currency: "VND",
         soldToday: "Đã bán hôm nay",
         addressTitle: "Vị trí sạp hàng",
-        addressText: "Sạp A601B, tầng 6, Tòa nhà Tân Trung Quốc, số 1 đường Shisanhang, quận Lệ Loan, Quảng Châu"
+        addressText: "Sạp A601B, tầng 6, Tòa nhà Tân Trung Quốc, số 1 đường Shisanhang, quận Lệ Loan, Quảng Châu",
+        phoneLabel: "Điện thoại"
       }
     };
 
