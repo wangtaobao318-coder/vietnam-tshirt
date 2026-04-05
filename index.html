@@ -89,18 +89,6 @@
       padding: 24px;
       box-shadow: 0 8px 30px rgba(15, 23, 42, 0.04);
     }
-    .tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      border-radius: 999px;
-      background: #f1f5f9;
-      color: #475569;
-      padding: 8px 14px;
-      font-size: 12px;
-      font-weight: 700;
-      margin-bottom: 18px;
-    }
     .hero-title {
       font-size: 44px;
       line-height: 1.1;
@@ -273,29 +261,28 @@
     }
 
     .image-eye {
-  position: absolute;
-  right: 10px;
-  bottom: 10px;
-  width: 30px;
-  height: 30px;
-  border-radius: 999px;
-  background: rgba(255,255,255,0.82);
-  border: 1px solid rgba(226,232,240,0.95);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #475569;
-  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
-  z-index: 2;
-  pointer-events: none;
-  backdrop-filter: blur(4px);
-}
-
-.image-eye svg {
-  width: 15px;
-  height: 15px;
-  display: block;
-}
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+      width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.82);
+      border: 1px solid rgba(226,232,240,0.95);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #475569;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+      z-index: 2;
+      pointer-events: none;
+      backdrop-filter: blur(4px);
+    }
+    .image-eye svg {
+      width: 15px;
+      height: 15px;
+      display: block;
+    }
 
     .product-body {
       padding: 16px;
@@ -321,16 +308,18 @@
       font-weight: 800;
       text-align: right;
       line-height: 1.3;
+      color: #dc2626;
     }
 
     .color-note {
       display: inline-block;
-      font-size: 13px;
-      color: #475569;
-      background: #f8fafc;
-      border: 1px solid #e5e7eb;
+      font-size: 14px;
+      font-weight: 700;
+      color: #9a3412;
+      background: #fff7ed;
+      border: 1px solid #fdba74;
       border-radius: 12px;
-      padding: 8px 12px;
+      padding: 9px 14px;
       line-height: 1.5;
     }
 
@@ -343,6 +332,10 @@
       padding: 12px 14px;
       font-size: 14px;
       font-weight: 700;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .empty {
@@ -527,7 +520,6 @@
     <div id="homeView" class="page-view active">
       <section class="hero-grid hide-on-category">
         <div class="panel">
-          <div class="tag">✨ <span id="heroTag">价格分类</span></div>
           <h1 class="hero-title" id="heroTitle">广州T恤厂家直销</h1>
           <p class="hero-desc" id="heroDesc">广州直发，四天到仓。全市场可比价，量大价更低，支持下单订货！持续上新，每天都有不同的款！</p>
           <div class="stats">
@@ -639,6 +631,7 @@
       15: 20
     };
     const EXCHANGE_RATE = 4000;
+    const ZALO_URL = "https://zalo.me/0708480027";
 
     const TRANSLATIONS = {
       zh: {
@@ -857,7 +850,6 @@
       setText("navLangToggle", text.languageToggle);
       setText("langOptionZh", "中文");
       setText("langOptionVi", "Tiếng Việt");
-      setText("heroTag", text.priceZone);
       setText("heroTitle", text.heroTitle);
       setText("heroDesc", text.heroDesc);
       setText("statTotalLabel", text.total);
@@ -902,28 +894,27 @@
       });
     }
 
+    function createZoomButton(item) {
+      return `
+        <button class="product-image-trigger" type="button" onclick="openImageModal('${item.image}', '${item.code}')">
+          <img class="product-image" src="${item.image}" alt="${item.code}">
+          <span class="image-eye" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="6"></circle>
+              <path d="M20 20l-4.2-4.2"></path>
+            </svg>
+          </span>
+        </button>
+      `;
+    }
+
     function createProductCard(item) {
       const text = t();
-      const enableZoom = state.page === "category";
 
       return `
         <div class="product-card">
           <div class="product-image-wrap">
-            ${
-              enableZoom
-                ? `
-                  <button class="product-image-trigger" type="button" onclick="openImageModal('${item.image}', '${item.code}')">
-                    <img class="product-image" src="${item.image}" alt="${item.code}">
-                    <span class="image-eye" aria-hidden="true">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-    <circle cx="11" cy="11" r="6"></circle>
-    <path d="M20 20l-4.2-4.2"></path>
-  </svg>
-</span>
-                  </button>
-                `
-                : `<img class="product-image" src="${item.image}" alt="${item.code}">`
-            }
+            ${createZoomButton(item)}
             <div class="badge-wrap">
               ${item.isNew ? `<span class="badge dark">${text.newest}</span>` : ""}
               ${item.featured ? `<span class="badge light">${text.featured}</span>` : ""}
@@ -944,7 +935,7 @@
               <div class="mini-label">${text.color}</div>
               <div class="color-note">${text.colorNote}</div>
             </div>
-            <button class="card-button">${text.consult}</button>
+            <a class="card-button" href="${ZALO_URL}" target="_blank" rel="noopener noreferrer">${text.consult}</a>
           </div>
         </div>
       `;
