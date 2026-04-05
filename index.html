@@ -274,26 +274,26 @@
 
     .image-eye {
   position: absolute;
-  right: 12px;
-  bottom: 12px;
-  width: 34px;
-  height: 34px;
+  right: 10px;
+  bottom: 10px;
+  width: 30px;
+  height: 30px;
   border-radius: 999px;
-  background: rgba(255,255,255,0.88);
-  border: 1px solid rgba(255,255,255,0.95);
+  background: rgba(255,255,255,0.82);
+  border: 1px solid rgba(226,232,240,0.95);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #334155;
-  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.10);
+  color: #475569;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
   z-index: 2;
   pointer-events: none;
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(4px);
 }
 
 .image-eye svg {
-  width: 16px;
-  height: 16px;
+  width: 15px;
+  height: 15px;
   display: block;
 }
 
@@ -915,9 +915,9 @@
                   <button class="product-image-trigger" type="button" onclick="openImageModal('${item.image}', '${item.code}')">
                     <img class="product-image" src="${item.image}" alt="${item.code}">
                     <span class="image-eye" aria-hidden="true">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6-10-6-10-6Z"></path>
-    <circle cx="12" cy="12" r="3"></circle>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="11" cy="11" r="6"></circle>
+    <path d="M20 20l-4.2-4.2"></path>
   </svg>
 </span>
                   </button>
