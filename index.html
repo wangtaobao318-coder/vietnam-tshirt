@@ -47,25 +47,24 @@
     .hero-desc, .section-desc, .footer-desc, .contact-desc { color: #475569; line-height: 1.8; }
     .hero-desc { margin-top: 16px; font-size: 16px; }
     .stats { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 22px; }
-    .stat { border: 1px solid #e5e7eb; background: #f8fafc; border-radius: 18px; padding: 14px 16px; min-width: 110px; }
+    .stat { border: 1px solid #e5e7eb; background: #f8fafc; border-radius: 18px; padding: 14px 16px; min-width: 120px; }
     .stat-label { font-size: 12px; color: #64748b; margin-bottom: 6px; }
     .stat-value { font-size: 24px; font-weight: 900; }
     .control-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
     .control-label { font-size: 14px; font-weight: 700; margin-bottom: 10px; color: #111827; }
-    .control-row { display: flex; gap: 8px; flex-wrap: wrap; }
     .search-input {
       width: 100%; border: 1px solid #d1d5db; border-radius: 16px; padding: 12px 14px; font-size: 14px; outline: none;
     }
     .section { margin-top: 28px; }
     .section-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; flex-wrap: wrap; }
     .section-title { font-size: 28px; font-weight: 900; margin: 0; }
-    .zone-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-top: 16px; }
+    .zone-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-top: 16px; }
     .zone-card {
       text-align: left; background: white; border-radius: 20px; padding: 16px;
       box-shadow: 0 4px 18px rgba(15, 23, 42, 0.05);
     }
     .zone-small { font-size: 12px; color: #64748b; }
-    .zone-big { font-size: 24px; font-weight: 900; margin-top: 8px; }
+    .zone-big { font-size: 22px; font-weight: 900; margin-top: 8px; line-height: 1.25; }
     .zone-text { font-size: 14px; color: #475569; margin-top: 10px; }
     .zone-card.active .zone-small, .zone-card.active .zone-text { color: rgba(255,255,255,0.84); }
     .products-grid {
@@ -184,8 +183,8 @@
       <section class="hero-grid hide-on-category">
         <div class="panel">
           <div class="tag">✨ <span id="heroTag">价格分类</span></div>
-          <h1 class="hero-title" id="heroTitle">越南地区 T恤批发展示站</h1>
-          <p class="hero-desc" id="heroDesc">首页点击价格即可看款。每个款展示图片、款号、颜色，支持中文 / 越南语切换，适合手机浏览与持续上新。</p>
+          <h1 class="hero-title" id="heroTitle">广州T恤厂家直销</h1>
+          <p class="hero-desc" id="heroDesc">广州直发，四天到仓。全市场可比价，量大价更低，支持下单订货！持续上新，每天都有不同的款！</p>
           <div class="stats">
             <div class="stat">
               <div class="stat-label" id="statTotalLabel">总款数</div>
@@ -198,6 +197,10 @@
             <div class="stat">
               <div class="stat-label" id="statNewLabel">新品上新</div>
               <div class="stat-value" id="statNewValue">18</div>
+            </div>
+            <div class="stat">
+              <div class="stat-label" id="statSoldLabel">今日已售</div>
+              <div class="stat-value" id="statSoldValue">1288</div>
             </div>
           </div>
         </div>
@@ -255,8 +258,8 @@
   <footer class="footer hide-on-category" id="contactSection">
     <div class="footer-grid">
       <div>
-        <div style="font-size:20px;font-weight:800;" id="footerBrand">T恤选款中心</div>
-        <p class="footer-desc" id="footerDesc">本页面适合做越南批发选款展示，可持续上新。</p>
+        <div style="font-size:20px;font-weight:800;" id="footerBrand">档口位置</div>
+        <p class="footer-desc" id="footerDesc">广州市荔湾区十三行路 1 号 新中国大厦 6 楼 A601B档</p>
       </div>
       <div class="contact-box">
         <div class="contact-title" id="contactTitle">☎ 联系我们</div>
@@ -283,8 +286,8 @@
         newArrival: "新品上新",
         priceZone: "价格分类",
         contact: "联系我们",
-        heroTitle: "越南地区 T恤批发展示站",
-        heroDesc: "首页点击价格即可看款。每个款展示图片、款号、颜色，支持中文 / 越南语切换，适合手机浏览与持续上新。",
+        heroTitle: "广州T恤厂家直销",
+        heroDesc: "广州直发，四天到仓。全市场可比价，量大价更低，支持下单订货！持续上新，每天都有不同的款！",
         total: "总款数",
         search: "搜索款号 / 颜色",
         latest: "最新上新",
@@ -300,7 +303,7 @@
         productDisplay: "产品展示区",
         productDisplayDesc: "这里是当前价格分类下的全部款式。",
         noData: "没有找到对应款式",
-        footer: "本页面适合做越南批发选款展示，可持续上新。",
+        footer: "档口位置",
         contactHint: "电话 / Zalo：0708480027",
         featured: "主推",
         newest: "新品",
@@ -310,7 +313,10 @@
         viewColors: "查看颜色",
         hideColors: "收起颜色",
         languageToggle: "语言切换",
-        currency: "RMB"
+        currency: "RMB",
+        soldToday: "今日已售",
+        addressTitle: "档口位置",
+        addressText: "广州市荔湾区十三行路 1 号 新中国大厦 6 楼 A601B档"
       },
       vi: {
         brand: "Kho Mẫu Áo Thun",
@@ -319,8 +325,8 @@
         newArrival: "Hàng mới",
         priceZone: "Phân loại giá",
         contact: "Liên hệ",
-        heroTitle: "Website trưng bày áo thun cho thị trường Việt Nam",
-        heroDesc: "Bấm vào mức giá ở trang chủ để xem mẫu. Mỗi mẫu hiển thị hình ảnh, mã hàng và màu sắc, hỗ trợ chuyển đổi tiếng Trung / tiếng Việt, phù hợp xem trên điện thoại và cập nhật hàng mới nhanh.",
+        heroTitle: "Nguồn hàng áo thun Quảng Châu bán trực tiếp từ xưởng",
+        heroDesc: "Hàng Quảng Châu gửi thẳng, về kho trong 4 ngày. Có thể so sánh giá toàn thị trường, lấy số lượng càng lớn giá càng tốt, hỗ trợ đặt hàng! Cập nhật liên tục, mỗi ngày đều có mẫu mới!",
         total: "Tổng số mẫu",
         search: "Tìm mã hàng / màu sắc",
         latest: "Mẫu mới cập nhật",
@@ -336,7 +342,7 @@
         productDisplay: "Khu trưng bày sản phẩm",
         productDisplayDesc: "Đây là toàn bộ mẫu trong khu giá hiện tại.",
         noData: "Không tìm thấy mẫu phù hợp",
-        footer: "Trang này phù hợp để làm website chọn mẫu hàng sỉ tại Việt Nam và dễ cập nhật thêm sản phẩm mới.",
+        footer: "Vị trí sạp hàng",
         contactHint: "Điện thoại / Zalo: 0708480027",
         featured: "Nổi bật",
         newest: "Mới",
@@ -346,7 +352,10 @@
         viewColors: "Xem màu sắc",
         hideColors: "Ẩn màu sắc",
         languageToggle: "Chuyển ngôn ngữ",
-        currency: "VND"
+        currency: "VND",
+        soldToday: "Đã bán hôm nay",
+        addressTitle: "Vị trí sạp hàng",
+        addressText: "广州市荔湾区十三行路 1 号 新中国大厦 6 楼 A601B档"
       }
     };
 
@@ -387,13 +396,20 @@
       });
     }
 
+    function getDailySales() {
+      const now = new Date();
+      const seed = now.getFullYear() * 10000 + (now.getMonth() + 1) * 100 + now.getDate();
+      return 1000 + (seed % 3876);
+    }
+
     const state = {
       lang: "vi",
       layout: "double",
       activePrice: null,
       query: "",
       products: createProducts(),
-      page: "home"
+      page: "home",
+      soldToday: getDailySales()
     };
 
     function t() { return TRANSLATIONS[state.lang] || TRANSLATIONS.vi; }
@@ -465,6 +481,8 @@
       setText("statTotalLabel", text.total);
       setText("statPriceLabel", text.priceZone);
       setText("statNewLabel", text.newArrival);
+      setText("statSoldLabel", text.soldToday);
+      setText("statSoldValue", state.soldToday);
       setText("searchLabel", `🔍 ${text.search}`);
       document.getElementById("searchInput").placeholder = text.search;
       setText("browseTitle", text.browseByPrice);
@@ -473,12 +491,12 @@
       setText("latestDesc", text.latestDesc);
       setText("productsTitle", state.activePrice == null ? text.productDisplay : `${text.zoneTitle} ${formatPrice(state.activePrice)}`);
       setText("productsDesc", text.productDisplayDesc);
-      setText("footerBrand", text.brand);
-      setText("footerDesc", text.footer);
+      setText("footerBrand", text.addressTitle);
+      setText("footerDesc", text.addressText);
       setText("contactTitle", `☎ ${text.contact}`);
       setText("contactDesc", text.contactHint);
-      document.getElementById("categoryLayoutSingle").textContent = `☰ ${text.single}`;
-      document.getElementById("categoryLayoutDouble").textContent = `⊞ ${text.double}`;
+      document.getElementById("categoryLayoutSingle").textContent = `☰ ${state.lang === "zh" ? "单排" : "1 cột"}`;
+      document.getElementById("categoryLayoutDouble").textContent = `⊞ ${state.lang === "zh" ? "双排" : "2 cột"}`;
       document.getElementById("backHomeBtn").textContent = `← ${text.backHome}`;
       document.getElementById("breadcrumbText").textContent = state.activePrice == null ? text.viewAll : `${text.currentCategory}：${formatPrice(state.activePrice)}`;
     }
@@ -649,6 +667,7 @@
     console.assert(state.products.length === 200, "Products should contain 200 items");
     console.assert(state.products.every(item => typeof item.code === "string" && item.code.length > 0), "Each product should have a code");
     console.assert(state.products.every(item => PRICES.includes(item.price)), "Each product should have a valid price");
+    console.assert(state.soldToday >= 1000, "Daily sold should not be below 1000");
 
     renderAll();
   </script>
