@@ -12,342 +12,115 @@
       background: #f8fafc;
       color: #111827;
     }
-    .container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 16px;
-    }
+    .container { max-width: 1280px; margin: 0 auto; padding: 16px; }
     .header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      background: rgba(255,255,255,0.95);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid #e5e7eb;
+      position: sticky; top: 0; z-index: 20; background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px); border-bottom: 1px solid #e5e7eb;
     }
     .header-inner {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 14px 16px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      flex-wrap: wrap;
+      max-width: 1280px; margin: 0 auto; padding: 14px 16px; display: flex;
+      align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
     }
-    .brand-wrap {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      min-width: 0;
-    }
+    .brand-wrap { display: flex; align-items: center; gap: 12px; min-width: 0; }
     .brand-icon {
-      width: 46px;
-      height: 46px;
-      border-radius: 16px;
-      background: #111827;
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 22px;
-      font-weight: 800;
-      flex-shrink: 0;
+      width: 46px; height: 46px; border-radius: 16px; background: #111827; color: white;
+      display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 800; flex-shrink: 0;
     }
-    .brand-title {
-      font-weight: 800;
-      font-size: 18px;
+    .brand-title { font-weight: 800; font-size: 18px; }
+    .brand-subtitle { color: #64748b; font-size: 12px; margin-top: 4px; }
+    .nav { display: flex; gap: 8px; flex-wrap: wrap; }
+    .btn, .zone-card, .card-button {
+      cursor: pointer; transition: all 0.2s ease; border: 1px solid #d1d5db;
+      background: white; color: #111827; border-radius: 14px; padding: 10px 14px; font-size: 14px; font-weight: 600;
     }
-    .brand-subtitle {
-      color: #64748b;
-      font-size: 12px;
-      margin-top: 4px;
-    }
-    .nav {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-    .btn, .price-btn, .zone-card, .card-button {
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-    .btn {
-      border: 1px solid #d1d5db;
-      background: white;
-      color: #111827;
-      border-radius: 14px;
-      padding: 10px 14px;
-      font-size: 14px;
-      font-weight: 600;
-    }
-    .btn.active {
-      background: #111827;
-      color: white;
-      border-color: #111827;
-    }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0,1.2fr) minmax(320px,0.8fr);
-      gap: 20px;
-      margin-top: 12px;
-    }
+    .btn.active, .zone-card.active { background: #111827; color: white; border-color: #111827; }
+    .hero-grid { display: grid; grid-template-columns: minmax(0,1.2fr) minmax(320px,0.8fr); gap: 20px; margin-top: 12px; }
     .panel {
-      background: white;
-      border: 1px solid #e5e7eb;
-      border-radius: 28px;
-      padding: 24px;
+      background: white; border: 1px solid #e5e7eb; border-radius: 28px; padding: 24px;
       box-shadow: 0 8px 30px rgba(15, 23, 42, 0.04);
     }
     .tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      border-radius: 999px;
-      background: #f1f5f9;
-      color: #475569;
-      padding: 8px 14px;
-      font-size: 12px;
-      font-weight: 700;
-      margin-bottom: 18px;
+      display: inline-flex; align-items: center; gap: 8px; border-radius: 999px; background: #f1f5f9;
+      color: #475569; padding: 8px 14px; font-size: 12px; font-weight: 700; margin-bottom: 18px;
     }
-    .hero-title {
-      font-size: 44px;
-      line-height: 1.1;
-      margin: 0;
-      font-weight: 900;
-    }
-    .hero-desc, .section-desc, .footer-desc, .contact-desc {
-      color: #475569;
-      line-height: 1.8;
-    }
+    .hero-title { font-size: 44px; line-height: 1.1; margin: 0; font-weight: 900; }
+    .hero-desc, .section-desc, .footer-desc, .contact-desc { color: #475569; line-height: 1.8; }
     .hero-desc { margin-top: 16px; font-size: 16px; }
-    .stats {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-top: 22px;
-    }
-    .stat {
-      border: 1px solid #e5e7eb;
-      background: #f8fafc;
-      border-radius: 18px;
-      padding: 14px 16px;
-      min-width: 110px;
-    }
-    .stat-label {
-      font-size: 12px;
-      color: #64748b;
-      margin-bottom: 6px;
-    }
-    .stat-value {
-      font-size: 24px;
-      font-weight: 900;
-    }
-    .control-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-    .control-label {
-      font-size: 14px;
-      font-weight: 700;
-      margin-bottom: 10px;
-      color: #111827;
-    }
-    .control-row {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
+    .stats { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 22px; }
+    .stat { border: 1px solid #e5e7eb; background: #f8fafc; border-radius: 18px; padding: 14px 16px; min-width: 110px; }
+    .stat-label { font-size: 12px; color: #64748b; margin-bottom: 6px; }
+    .stat-value { font-size: 24px; font-weight: 900; }
+    .control-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .control-label { font-size: 14px; font-weight: 700; margin-bottom: 10px; color: #111827; }
+    .control-row { display: flex; gap: 8px; flex-wrap: wrap; }
     .search-input {
-      width: 100%;
-      border: 1px solid #d1d5db;
-      border-radius: 16px;
-      padding: 12px 14px;
-      font-size: 14px;
-      outline: none;
+      width: 100%; border: 1px solid #d1d5db; border-radius: 16px; padding: 12px 14px; font-size: 14px; outline: none;
     }
-    .price-grid-small {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 8px;
-    }
+    .price-grid-small { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
     .section { margin-top: 28px; }
-    .section-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-    .section-title {
-      font-size: 28px;
-      font-weight: 900;
-      margin: 0;
-    }
-    .zone-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-      gap: 12px;
-      margin-top: 16px;
-    }
+    .section-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; flex-wrap: wrap; }
+    .section-title { font-size: 28px; font-weight: 900; margin: 0; }
+    .zone-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 12px; margin-top: 16px; }
     .zone-card {
-      text-align: left;
-      border: 1px solid #e5e7eb;
-      background: white;
-      border-radius: 20px;
-      padding: 16px;
+      text-align: left; background: white; border-radius: 20px; padding: 16px;
       box-shadow: 0 4px 18px rgba(15, 23, 42, 0.05);
     }
     .zone-small { font-size: 12px; color: #64748b; }
     .zone-big { font-size: 28px; font-weight: 900; margin-top: 4px; }
     .zone-text { font-size: 14px; color: #475569; margin-top: 10px; }
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 16px;
-      margin-top: 16px;
-    }
-    .products-grid.single {
-      grid-template-columns: 1fr;
-    }
+    .zone-card.active .zone-small, .zone-card.active .zone-text { color: rgba(255,255,255,0.84); }
+    .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; margin-top: 16px; }
+    .products-grid.single { grid-template-columns: 1fr; }
     .product-card {
-      background: white;
-      border: 1px solid #e5e7eb;
-      border-radius: 20px;
-      overflow: hidden;
+      background: white; border: 1px solid #e5e7eb; border-radius: 20px; overflow: hidden;
       box-shadow: 0 4px 18px rgba(15, 23, 42, 0.05);
     }
-    .product-image-wrap {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 3 / 4;
-      background: #f1f5f9;
-      overflow: hidden;
-    }
-    .product-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    .badge-wrap {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-    .badge {
-      padding: 5px 10px;
-      border-radius: 999px;
-      font-size: 12px;
-      font-weight: 700;
-    }
+    .product-image-wrap { position: relative; width: 100%; aspect-ratio: 3 / 4; background: #f1f5f9; overflow: hidden; }
+    .product-image { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .badge-wrap { position: absolute; top: 12px; left: 12px; display: flex; gap: 8px; flex-wrap: wrap; }
+    .badge { padding: 5px 10px; border-radius: 999px; font-size: 12px; font-weight: 700; }
     .badge.dark { background: rgba(17,24,39,0.9); color: white; }
-    .badge.light {
-      background: rgba(255,255,255,0.92);
-      color: #111827;
-      border: 1px solid rgba(229,231,235,0.9);
-    }
-    .product-body {
-      padding: 16px;
-      display: grid;
-      gap: 14px;
-    }
-    .product-top {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-    }
-    .mini-label {
-      font-size: 12px;
-      color: #64748b;
-      margin-bottom: 4px;
-    }
+    .badge.light { background: rgba(255,255,255,0.92); color: #111827; border: 1px solid rgba(229,231,235,0.9); }
+    .product-body { padding: 16px; display: grid; gap: 14px; }
+    .product-top { display: flex; justify-content: space-between; gap: 12px; }
+    .mini-label { font-size: 12px; color: #64748b; margin-bottom: 4px; }
     .product-code { font-size: 16px; font-weight: 700; }
     .product-price { font-size: 20px; font-weight: 800; text-align: right; }
-    .color-list {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
+    .color-list { display: flex; gap: 8px; flex-wrap: wrap; }
     .color-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      border: 1px solid #e5e7eb;
-      border-radius: 999px;
-      padding: 6px 10px;
-      font-size: 12px;
-      color: #334155;
-      background: white;
+      display: inline-flex; align-items: center; gap: 8px; border: 1px solid #e5e7eb; border-radius: 999px;
+      padding: 6px 10px; font-size: 12px; color: #334155; background: white;
     }
-    .color-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(0,0,0,0.12);
-      display: inline-block;
-    }
+    .color-dot { width: 12px; height: 12px; border-radius: 999px; border: 1px solid rgba(0,0,0,0.12); display: inline-block; }
     .card-button {
-      width: 100%;
-      border: 0;
-      background: #111827;
-      color: white;
-      border-radius: 14px;
-      padding: 12px 14px;
-      font-size: 14px;
-      font-weight: 700;
+      width: 100%; border: 0; background: #111827; color: white; border-radius: 14px; padding: 12px 14px;
+      font-size: 14px; font-weight: 700;
     }
     .empty {
-      background: white;
-      border: 1px dashed #cbd5e1;
-      border-radius: 24px;
-      padding: 40px;
-      text-align: center;
-      color: #64748b;
-      margin-top: 16px;
+      background: white; border: 1px dashed #cbd5e1; border-radius: 24px; padding: 40px; text-align: center; color: #64748b; margin-top: 16px;
     }
-    .footer {
-      border-top: 1px solid #e5e7eb;
-      background: white;
-      margin-top: 40px;
-    }
+    .footer { border-top: 1px solid #e5e7eb; background: white; margin-top: 40px; }
     .footer-grid {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 16px;
-      display: grid;
-      grid-template-columns: minmax(0,1fr) minmax(320px,420px);
-      gap: 20px;
-      align-items: center;
+      max-width: 1280px; margin: 0 auto; padding: 16px; display: grid; grid-template-columns: minmax(0,1fr) minmax(320px,420px);
+      gap: 20px; align-items: center;
     }
-    .contact-box {
-      background: #f8fafc;
-      border: 1px solid #e5e7eb;
-      border-radius: 24px;
-      padding: 18px;
-    }
+    .contact-box { background: #f8fafc; border: 1px solid #e5e7eb; border-radius: 24px; padding: 18px; }
     .contact-title { font-weight: 800; font-size: 16px; }
-    .contact-tags {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-top: 14px;
-    }
+    .contact-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
     .contact-tag {
-      display: inline-flex;
-      align-items: center;
-      border: 1px solid #d1d5db;
-      border-radius: 999px;
-      padding: 7px 12px;
-      background: white;
-      font-size: 13px;
-      font-weight: 700;
+      display: inline-flex; align-items: center; border: 1px solid #d1d5db; border-radius: 999px; padding: 7px 12px;
+      background: white; font-size: 13px; font-weight: 700;
     }
+    .breadcrumb {
+      display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 12px; padding: 0 2px;
+    }
+    .breadcrumb-text { font-size: 14px; color: #64748b; }
+    .page-view { display: none; }
+    .page-view.active { display: block; }
+    .hide-on-category { display: block; }
+    .only-category { display: none; }
+    body.category-mode .hide-on-category { display: none !important; }
+    body.category-mode .only-category { display: block !important; }
     @media (max-width: 900px) {
       .hero-grid, .footer-grid { grid-template-columns: 1fr; }
       .hero-title { font-size: 34px; }
@@ -366,7 +139,7 @@
         </div>
       </div>
       <nav class="nav">
-        <button class="btn active" id="navHome">首页</button>
+        <button class="btn active" id="navHomeBtn">首页</button>
         <button class="btn" id="navPriceZone">价格分类</button>
         <button class="btn" id="navNewArrival">新品上新</button>
         <button class="btn" id="navContact">联系我们</button>
@@ -375,90 +148,99 @@
   </header>
 
   <main class="container">
-    <section class="hero-grid">
-      <div class="panel">
-        <div class="tag">✨ <span id="heroTag">价格分类</span></div>
-        <h1 class="hero-title" id="heroTitle">越南地区 T恤批发展示站</h1>
-        <p class="hero-desc" id="heroDesc">首页点击价格即可看款。每个款展示图片、款号、颜色，支持中文 / 越南语切换，适合手机浏览与持续上新。</p>
-        <div class="stats">
-          <div class="stat">
-            <div class="stat-label" id="statTotalLabel">总款数</div>
-            <div class="stat-value" id="statTotalValue">200</div>
-          </div>
-          <div class="stat">
-            <div class="stat-label" id="statPriceLabel">价格分类</div>
-            <div class="stat-value" id="statPriceValue">8</div>
-          </div>
-          <div class="stat">
-            <div class="stat-label" id="statNewLabel">新品上新</div>
-            <div class="stat-value" id="statNewValue">18</div>
-          </div>
-        </div>
-      </div>
+    <div class="breadcrumb only-category">
+      <button class="btn" id="backHomeBtn">← 返回首页</button>
+      <div class="breadcrumb-text" id="breadcrumbText">当前分类：10</div>
+    </div>
 
-      <div class="panel">
-        <div class="control-grid">
-          <div>
-            <div class="control-label" id="langLabel">🌐 语言</div>
-            <div class="control-row">
-              <button class="btn" id="langZh">中文</button>
-              <button class="btn active" id="langVi">Tiếng Việt</button>
+    <div id="homeView" class="page-view active">
+      <section class="hero-grid hide-on-category">
+        <div class="panel">
+          <div class="tag">✨ <span id="heroTag">价格分类</span></div>
+          <h1 class="hero-title" id="heroTitle">越南地区 T恤批发展示站</h1>
+          <p class="hero-desc" id="heroDesc">首页点击价格即可看款。每个款展示图片、款号、颜色，支持中文 / 越南语切换，适合手机浏览与持续上新。</p>
+          <div class="stats">
+            <div class="stat">
+              <div class="stat-label" id="statTotalLabel">总款数</div>
+              <div class="stat-value" id="statTotalValue">200</div>
             </div>
-          </div>
-          <div>
-            <div class="control-label" id="layoutLabel">展示方式</div>
-            <div class="control-row">
-              <button class="btn" id="layoutSingle">☰ 单排</button>
-              <button class="btn active" id="layoutDouble">⊞ 双排</button>
+            <div class="stat">
+              <div class="stat-label" id="statPriceLabel">价格分类</div>
+              <div class="stat-value" id="statPriceValue">8</div>
+            </div>
+            <div class="stat">
+              <div class="stat-label" id="statNewLabel">新品上新</div>
+              <div class="stat-value" id="statNewValue">18</div>
             </div>
           </div>
         </div>
 
-        <div style="margin-top: 18px;">
-          <div class="control-label" id="searchLabel">🔍 搜索款号 / 颜色</div>
-          <input class="search-input" id="searchInput" placeholder="搜索款号 / 颜色" />
-        </div>
+        <div class="panel">
+          <div class="control-grid">
+            <div>
+              <div class="control-label" id="langLabel">🌐 语言</div>
+              <div class="control-row">
+                <button class="btn" id="langZh">中文</button>
+                <button class="btn active" id="langVi">Tiếng Việt</button>
+              </div>
+            </div>
+            <div>
+              <div class="control-label" id="layoutLabel">展示方式</div>
+              <div class="control-row">
+                <button class="btn" id="layoutSingle">☰ 单排</button>
+                <button class="btn active" id="layoutDouble">⊞ 双排</button>
+              </div>
+            </div>
+          </div>
 
-        <div style="margin-top: 18px;">
-          <div class="control-label" id="priceLabel">价格分类</div>
-          <div class="price-grid-small" id="smallPriceButtons"></div>
-        </div>
-      </div>
-    </section>
+          <div style="margin-top: 18px;">
+            <div class="control-label" id="searchLabel">🔍 搜索款号 / 颜色</div>
+            <input class="search-input" id="searchInput" placeholder="搜索款号 / 颜色" />
+          </div>
 
-    <section class="section">
-      <div class="section-head">
-        <div>
-          <h2 class="section-title" id="browseTitle">按价格看款</h2>
-          <p class="section-desc" id="browseDesc">点击价格区间，直接进入对应款式列表。</p>
+          <div style="margin-top: 18px;">
+            <div class="control-label" id="priceLabel">价格分类</div>
+            <div class="price-grid-small" id="smallPriceButtons"></div>
+          </div>
         </div>
-      </div>
-      <div class="zone-grid" id="zoneGrid"></div>
-    </section>
+      </section>
 
-    <section class="section">
-      <div class="section-head">
-        <div>
-          <h2 class="section-title" id="latestTitle">最新上新</h2>
-          <p class="section-desc" id="latestDesc">优先展示最近新增的款式，方便客户快速看新货。</p>
+      <section class="section">
+        <div class="section-head">
+          <div>
+            <h2 class="section-title" id="browseTitle">按价格看款</h2>
+            <p class="section-desc" id="browseDesc">点击价格区间，直接进入对应款式列表。</p>
+          </div>
         </div>
-      </div>
-      <div class="products-grid" id="latestProducts"></div>
-    </section>
+        <div class="zone-grid" id="zoneGrid"></div>
+      </section>
 
-    <section class="section">
-      <div class="section-head">
-        <div>
-          <h2 class="section-title" id="productsTitle">产品展示区</h2>
-          <p class="section-desc" id="productsDesc">支持单排 / 双排切换，适合手机给客户发链接直接看款。</p>
+      <section class="section hide-on-category">
+        <div class="section-head">
+          <div>
+            <h2 class="section-title" id="latestTitle">最新上新</h2>
+            <p class="section-desc" id="latestDesc">优先展示最近新增的款式，方便客户快速看新货。</p>
+          </div>
         </div>
-        <div style="font-size:14px;color:#64748b;font-weight:600;" id="resultInfo">查看全部 · 200</div>
-      </div>
-      <div id="productsWrap"></div>
-    </section>
+        <div class="products-grid" id="latestProducts"></div>
+      </section>
+    </div>
+
+    <div id="categoryView" class="page-view">
+      <section class="section" style="margin-top: 20px;">
+        <div class="section-head">
+          <div>
+            <h2 class="section-title" id="productsTitle">产品展示区</h2>
+            <p class="section-desc" id="productsDesc">支持单排 / 双排切换，适合手机给客户发链接直接看款。</p>
+          </div>
+          <div style="font-size:14px;color:#64748b;font-weight:600;" id="resultInfo">查看全部 · 200</div>
+        </div>
+        <div id="productsWrap"></div>
+      </section>
+    </div>
   </main>
 
-  <footer class="footer">
+  <footer class="footer hide-on-category">
     <div class="footer-grid">
       <div>
         <div style="font-size:20px;font-weight:800;" id="footerBrand">T恤选款中心</div>
@@ -508,13 +290,15 @@
         consult: "咨询拿货",
         viewAll: "查看全部",
         productDisplay: "产品展示区",
-        productDisplayDesc: "支持单排 / 双排切换，适合手机给客户发链接直接看款。",
+        productDisplayDesc: "这里是当前价格分类下的全部款式。",
         noData: "没有找到对应款式",
         footer: "本页面适合做越南批发选款展示，可持续上新。",
         contactHint: "这里可替换成你的 Zalo / Facebook / TikTok / 微信方式",
         featured: "主推",
         newest: "新品",
-        zoneTitle: "价格区"
+        zoneTitle: "价格区",
+        currentCategory: "当前分类",
+        backHome: "返回首页"
       },
       vi: {
         brand: "Kho Mẫu Áo Thun",
@@ -543,13 +327,15 @@
         consult: "Liên hệ lấy hàng",
         viewAll: "Xem tất cả",
         productDisplay: "Khu trưng bày sản phẩm",
-        productDisplayDesc: "Hỗ trợ chuyển 1 cột / 2 cột, rất phù hợp gửi link cho khách xem trên điện thoại.",
+        productDisplayDesc: "Đây là toàn bộ mẫu trong khu giá hiện tại.",
         noData: "Không tìm thấy mẫu phù hợp",
         footer: "Trang này phù hợp để làm website chọn mẫu hàng sỉ tại Việt Nam và dễ cập nhật thêm sản phẩm mới.",
         contactHint: "Có thể thay phần này bằng Zalo / Facebook / TikTok / WeChat của bạn",
         featured: "Nổi bật",
         newest: "Mới",
-        zoneTitle: "Khu giá"
+        zoneTitle: "Khu giá",
+        currentCategory: "Phân loại hiện tại",
+        backHome: "Quay lại trang chủ"
       }
     };
 
@@ -592,40 +378,51 @@
     const state = {
       lang: "vi",
       layout: "double",
-      activePrice: "all",
+      activePrice: null,
       query: "",
-      products: createProducts()
+      products: createProducts(),
+      page: "home"
     };
 
-    function t() {
-      return TRANSLATIONS[state.lang] || TRANSLATIONS.vi;
-    }
+    function t() { return TRANSLATIONS[state.lang] || TRANSLATIONS.vi; }
 
     function getFilteredProducts() {
       const q = state.query.trim().toLowerCase();
       return state.products.filter(item => {
-        const matchesPrice = state.activePrice === "all" ? true : String(item.price) === state.activePrice;
-        const matchesQuery = !q
-          ? true
-          : item.code.toLowerCase().includes(q) || item.colors.join(" ").toLowerCase().includes(q);
+        const matchesPrice = state.activePrice == null ? true : item.price === state.activePrice;
+        const matchesQuery = !q ? true : item.code.toLowerCase().includes(q) || item.colors.join(" ").toLowerCase().includes(q);
         return matchesPrice && matchesQuery;
       });
     }
 
-    function getNewestProducts() {
-      return state.products.filter(item => item.isNew).slice(0, 8);
+    function getNewestProducts() { return state.products.filter(item => item.isNew).slice(0, 8); }
+    function setText(id, value) { const el = document.getElementById(id); if (el) el.textContent = value; }
+
+    function openHome() {
+      state.page = "home";
+      state.activePrice = null;
+      document.body.classList.remove("category-mode");
+      document.getElementById("homeView").classList.add("active");
+      document.getElementById("categoryView").classList.remove("active");
+      renderAll();
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
-    function setText(id, value) {
-      const el = document.getElementById(id);
-      if (el) el.textContent = value;
+    function openCategory(price) {
+      state.page = "category";
+      state.activePrice = price;
+      document.body.classList.add("category-mode");
+      document.getElementById("homeView").classList.remove("active");
+      document.getElementById("categoryView").classList.add("active");
+      renderAll();
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
     function renderTexts() {
       const text = t();
       setText("brandTitle", text.brand);
       setText("brandSubtitle", text.subtitle);
-      setText("navHome", text.home);
+      setText("navHomeBtn", text.home);
       setText("navPriceZone", text.priceZone);
       setText("navNewArrival", text.newArrival);
       setText("navContact", text.contact);
@@ -644,7 +441,7 @@
       setText("browseDesc", text.browseByPriceDesc);
       setText("latestTitle", text.latest);
       setText("latestDesc", text.latestDesc);
-      setText("productsTitle", text.productDisplay);
+      setText("productsTitle", state.activePrice == null ? text.productDisplay : `${text.zoneTitle} ${state.activePrice}`);
       setText("productsDesc", text.productDisplayDesc);
       setText("footerBrand", text.brand);
       setText("footerDesc", text.footer);
@@ -652,24 +449,19 @@
       setText("contactDesc", text.contactHint);
       document.getElementById("layoutSingle").textContent = `☰ ${text.single}`;
       document.getElementById("layoutDouble").textContent = `⊞ ${text.double}`;
+      document.getElementById("backHomeBtn").textContent = `← ${text.backHome}`;
+      document.getElementById("breadcrumbText").textContent = state.activePrice == null ? text.viewAll : `${text.currentCategory}：${state.activePrice}`;
     }
 
     function renderSmallPriceButtons() {
       const text = t();
       const wrap = document.getElementById("smallPriceButtons");
       wrap.innerHTML = "";
-
-      const allBtn = document.createElement("button");
-      allBtn.className = `btn ${state.activePrice === "all" ? "active" : ""}`;
-      allBtn.textContent = text.all;
-      allBtn.onclick = () => { state.activePrice = "all"; renderAll(); };
-      wrap.appendChild(allBtn);
-
       PRICES.forEach(price => {
         const btn = document.createElement("button");
-        btn.className = `btn ${state.activePrice === String(price) ? "active" : ""}`;
+        btn.className = `btn ${state.activePrice === price ? "active" : ""}`;
         btn.textContent = price;
-        btn.onclick = () => { state.activePrice = String(price); renderAll(); };
+        btn.onclick = () => openCategory(price);
         wrap.appendChild(btn);
       });
     }
@@ -680,17 +472,13 @@
       wrap.innerHTML = "";
       PRICES.forEach(price => {
         const card = document.createElement("button");
-        card.className = "zone-card";
+        card.className = `zone-card ${state.activePrice === price && state.page === 'category' ? 'active' : ''}`;
         card.innerHTML = `
           <div class="zone-small">${text.zoneTitle}</div>
           <div class="zone-big">${price}</div>
           <div class="zone-text">${text.enterZone}</div>
         `;
-        card.onclick = () => {
-          state.activePrice = String(price);
-          renderAll();
-          window.scrollTo({ top: document.getElementById("productsTitle").offsetTop - 80, behavior: "smooth" });
-        };
+        card.onclick = () => openCategory(price);
         wrap.appendChild(card);
       });
     }
@@ -703,7 +491,6 @@
           ${color}
         </span>
       `).join("");
-
       return `
         <div class="product-card">
           <div class="product-image-wrap">
@@ -743,9 +530,7 @@
       const text = t();
       const wrap = document.getElementById("productsWrap");
       const filtered = getFilteredProducts();
-      const resultText = state.activePrice === "all"
-        ? `${text.viewAll} · ${filtered.length}`
-        : `${text.zoneTitle} ${state.activePrice} · ${filtered.length}`;
+      const resultText = state.activePrice == null ? `${text.viewAll} · ${filtered.length}` : `${text.zoneTitle} ${state.activePrice} · ${filtered.length}`;
       setText("resultInfo", resultText);
 
       if (!filtered.length) {
@@ -761,6 +546,7 @@
       document.getElementById("langVi").classList.toggle("active", state.lang === "vi");
       document.getElementById("layoutSingle").classList.toggle("active", state.layout === "single");
       document.getElementById("layoutDouble").classList.toggle("active", state.layout === "double");
+      document.getElementById("navHomeBtn").classList.toggle("active", state.page === "home");
     }
 
     function renderAll() {
@@ -776,9 +562,18 @@
     document.getElementById("langVi").onclick = () => { state.lang = "vi"; renderAll(); };
     document.getElementById("layoutSingle").onclick = () => { state.layout = "single"; renderAll(); };
     document.getElementById("layoutDouble").onclick = () => { state.layout = "double"; renderAll(); };
+    document.getElementById("navHomeBtn").onclick = () => openHome();
+    document.getElementById("backHomeBtn").onclick = () => openHome();
     document.getElementById("searchInput").addEventListener("input", function(e) {
       state.query = e.target.value;
-      renderProducts();
+      if (state.page === "home" && e.target.value.trim()) {
+        state.page = "category";
+        state.activePrice = null;
+        document.body.classList.add("category-mode");
+        document.getElementById("homeView").classList.remove("active");
+        document.getElementById("categoryView").classList.add("active");
+      }
+      renderAll();
     });
 
     console.assert(Array.isArray(state.products), "Products should be an array");
