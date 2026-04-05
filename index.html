@@ -205,7 +205,7 @@
         </div>
       </section>
 
-      <section class="section">
+     <section class="section" id="priceSection">
         <div class="section-head">
           <div>
             <h2 class="section-title" id="browseTitle">按价格看款</h2>
@@ -215,7 +215,7 @@
         <div class="zone-grid" id="zoneGrid"></div>
       </section>
 
-      <section class="section hide-on-category">
+      <section class="section hide-on-category" id="newSection">
         <div class="section-head">
           <div>
             <h2 class="section-title" id="latestTitle">最新上新</h2>
@@ -240,7 +240,7 @@
     </div>
   </main>
 
-  <footer class="footer hide-on-category">
+  <footer class="footer hide-on-category" id="contactSection">
     <div class="footer-grid">
       <div>
         <div style="font-size:20px;font-weight:800;" id="footerBrand">T恤选款中心</div>
@@ -562,8 +562,32 @@
     document.getElementById("langVi").onclick = () => { state.lang = "vi"; renderAll(); };
     document.getElementById("layoutSingle").onclick = () => { state.layout = "single"; renderAll(); };
     document.getElementById("layoutDouble").onclick = () => { state.layout = "double"; renderAll(); };
-    document.getElementById("navHomeBtn").onclick = () => openHome();
-    document.getElementById("backHomeBtn").onclick = () => openHome();
+    document.getElementById("navHomeBtn").onclick = () => {
+  openHome();
+};
+
+document.getElementById("navPriceZone").onclick = () => {
+  openHome();
+  setTimeout(() => {
+    document.getElementById("priceSection")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, 50);
+};
+
+document.getElementById("navNewArrival").onclick = () => {
+  openHome();
+  setTimeout(() => {
+    document.getElementById("newSection")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, 50);
+};
+
+document.getElementById("navContact").onclick = () => {
+  openHome();
+  setTimeout(() => {
+    document.getElementById("contactSection")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, 50);
+};
+
+document.getElementById("backHomeBtn").onclick = () => openHome();
     document.getElementById("searchInput").addEventListener("input", function(e) {
       state.query = e.target.value;
       if (state.page === "home" && e.target.value.trim()) {
