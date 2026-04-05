@@ -712,35 +712,29 @@
       }
     };
 
-    const SAMPLE_COLORS = [
-      ["Trắng", "Đen", "Xám", "Kem", "Xanh", "Nâu", "Hồng", "Đỏ"],
-      ["Trắng", "Xám", "Kem", "Đen"],
-      ["Đen", "Xám", "Trắng"],
-      ["Kem", "Đen", "Nâu", "Trắng", "Xanh"],
-      ["Xanh", "Trắng", "Đen"],
-      ["Nâu", "Kem", "Trắng", "Đen"],
-      ["Hồng", "Trắng", "Kem", "Xám"],
-      ["Xám", "Đen", "Trắng", "Kem"]
-    ];
-function createProducts() {
-  const rows = [
-    { code: "Ata-00001", basePrice: 10, isNew: true },
-    { code: "Ata-00002", basePrice: 10, isNew: false },
-    { code: "Atb-00001", basePrice: 11, isNew: true },
-    { code: "Atb-00002", basePrice: 11, isNew: false }
-  ];
+    async function createProducts() {
+      const response = await fetch("./products.csv");
+      const csvText = await response.text();
 
-  return rows.map((item, index) => ({
-    id: index + 1,
-    code: item.code,
-    basePrice: item.basePrice,
-    colors: [],
-    isNew: item.isNew,
-    featured: false,
-    image: `https://res.cloudinary.com/df9x8bpyj/image/upload/${item.code}.jpg`
-  }));
-}
+      const lines = csvText.trim().split(/\r?\n/);
+      const dataLines = lines.slice(1);
 
+      return dataLines
+        .map((line, index) => {
+          const [code, basePrice, isNew] = line.split(",");
+
+          return {
+            id: index + 1,
+            code: code.trim(),
+            basePrice: Number(basePrice.trim()),
+            colors: [],
+            isNew: isNew.trim().toUpperCase() === "TRUE",
+            featured: false,
+            image: `https://res.cloudinary.com/df9x8bpyj/image/upload/${code.trim()}.jpg`
+          };
+        })
+        .filter(item => item.code);
+    }
 
     function getDailySales() {
       const now = new Date();
@@ -753,7 +747,7 @@ function createProducts() {
       layout: "double",
       activeBasePrice: null,
       query: "",
-      products: createProducts(),
+      products: [],
       page: "home",
       soldToday: getDailySales()
     };
@@ -781,7 +775,7 @@ function createProducts() {
         const matchesPrice = state.activeBasePrice == null ? true : item.basePrice === state.activeBasePrice;
         const matchesQuery = !q
           ? true
-          : item.code.toLowerCase().includes(q) || item.colors.join(" ").toLowerCase().includes(q);
+          : item.code.toLowerCase().includes(q);
         return matchesPrice && matchesQuery;
       });
     }
@@ -878,6 +872,9 @@ function createProducts() {
       document.getElementById("categoryLayoutDouble").textContent = `⊞ ${state.lang === "zh" ? "双排" : "2 cột"}`;
       document.getElementById("backHomeBtn").textContent = `← ${text.backHome}`;
       document.getElementById("breadcrumbText").textContent = state.activeBasePrice == null ? text.viewAll : `${text.currentCategory}：${formatPrice(state.activeBasePrice)}`;
+      setText("statTotalValue", state.products.length);
+      setText("statPriceValue", BASE_PRICES.length);
+      setText("statNewValue", state.products.filter(item => item.isNew).length);
     }
 
     function renderZoneCards() {
@@ -920,7 +917,6 @@ function createProducts() {
             ${createZoomButton(item)}
             <div class="badge-wrap">
               ${item.isNew ? `<span class="badge dark">${text.newest}</span>` : ""}
-              ${item.featured ? `<span class="badge light">${text.featured}</span>` : ""}
             </div>
           </div>
           <div class="product-body">
@@ -1068,13 +1064,16 @@ function createProducts() {
       }
     });
 
-    console.assert(Array.isArray(state.products), "Products should be an array");
-    console.assert(state.products.length === 200, "Products should contain 200 items");
-    console.assert(state.products.every(item => typeof item.code === "string" && item.code.length > 0), "Each product should have a code");
-    console.assert(state.products.every(item => BASE_PRICES.includes(item.basePrice)), "Each product should have a valid base price");
-    console.assert(state.soldToday >= 1000, "Daily sold should not be below 1000");
+    createProducts().then(products => {
+      state.products = products;
 
-    renderAll();
+      console.assert(Array.isArray(state.products), "Products should be an array");
+      console.assert(state.products.every(item => typeof item.code === "string" && item.code.length > 0), "Each product should have a code");
+      console.assert(state.products.every(item => BASE_PRICES.includes(item.basePrice)), "Each product should have a valid base price");
+      console.assert(state.soldToday >= 1000, "Daily sold should not be below 1000");
+
+      renderAll();
+    });
   </script>
 </body>
 </html>
