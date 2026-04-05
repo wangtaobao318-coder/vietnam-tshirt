@@ -278,8 +278,8 @@
         <div class="contact-title" id="contactTitle">☎ 联系我们</div>
         <p class="contact-desc" id="contactDesc">电话 / Zalo：0708480027</p>
         <div class="contact-tags">
-          <span class="contact-tag">电话：0708480027</span>
-          <span class="contact-tag">Zalo：0708480027</span>
+          <span class="contact-tag" id="contactPhoneTag">电话：0708480027</span>
+          <span class="contact-tag" id="contactZaloTag">Zalo：0708480027</span>
         </div>
       </div>
     </div>
@@ -339,6 +339,8 @@
         soldToday: "今日已售",
         addressTitle: "档口位置",
         addressText: "广州市荔湾区十三行路 1 号 新中国大厦 6 楼 A601B档"
+        contactHint: "电话 / Zalo：0708480027",
+        phoneLabel: "电话",
       },
       vi: {
         brand: "Kho Mẫu Áo Thun",
@@ -365,6 +367,7 @@
         productDisplayDesc: "Đây là toàn bộ mẫu trong khu giá hiện tại.",
         noData: "Không tìm thấy mẫu phù hợp",
         contactHint: "Điện thoại / Zalo: 0708480027",
+        phoneLabel: "Điện thoại",
         featured: "Nổi bật",
         newest: "Mới",
         zoneTitle: "Khu giá",
@@ -532,6 +535,8 @@
       setText("footerDesc", text.addressText);
       setText("contactTitle", `☎ ${text.contact}`);
       setText("contactDesc", text.contactHint);
+      setText("contactPhoneTag", state.lang === "zh" ? `${text.phoneLabel}：0708480027` : `${text.phoneLabel}: 0708480027`);
+      setText("contactZaloTag", state.lang === "zh" ? `Zalo：0708480027` : `Zalo: 0708480027`);
       document.getElementById("categoryLayoutSingle").textContent = `☰ ${state.lang === "zh" ? "单排" : "1 cột"}`;
       document.getElementById("categoryLayoutDouble").textContent = `⊞ ${state.lang === "zh" ? "双排" : "2 cột"}`;
       document.getElementById("backHomeBtn").textContent = `← ${text.backHome}`;
