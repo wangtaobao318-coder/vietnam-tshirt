@@ -50,14 +50,17 @@
     .stat { border: 1px solid #e5e7eb; background: #f8fafc; border-radius: 18px; padding: 14px 16px; min-width: 120px; }
     .stat-label { font-size: 12px; color: #64748b; margin-bottom: 6px; }
     .stat-value { font-size: 24px; font-weight: 900; }
+
     .control-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
     .control-label { font-size: 14px; font-weight: 700; margin-bottom: 10px; color: #111827; }
     .search-input {
       width: 100%; border: 1px solid #d1d5db; border-radius: 16px; padding: 12px 14px; font-size: 14px; outline: none;
     }
+
     .section { margin-top: 28px; }
     .section-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; flex-wrap: wrap; }
     .section-title { font-size: 28px; font-weight: 900; margin: 0; }
+
     .zone-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-top: 16px; }
     .zone-card {
       text-align: left; background: white; border-radius: 20px; padding: 16px;
@@ -67,6 +70,7 @@
     .zone-big { font-size: 22px; font-weight: 900; margin-top: 8px; line-height: 1.25; }
     .zone-text { font-size: 14px; color: #475569; margin-top: 10px; }
     .zone-card.active .zone-small, .zone-card.active .zone-text { color: rgba(255,255,255,0.84); }
+
     .products-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -74,6 +78,7 @@
       margin-top: 16px;
     }
     .products-grid.single { grid-template-columns: 1fr; }
+
     .product-card {
       background: white; border: 1px solid #e5e7eb; border-radius: 20px; overflow: hidden;
       box-shadow: 0 4px 18px rgba(15, 23, 42, 0.05);
@@ -84,11 +89,13 @@
     .badge { padding: 5px 10px; border-radius: 999px; font-size: 12px; font-weight: 700; }
     .badge.dark { background: rgba(17,24,39,0.9); color: white; }
     .badge.light { background: rgba(255,255,255,0.92); color: #111827; border: 1px solid rgba(229,231,235,0.9); }
+
     .product-body { padding: 16px; display: grid; gap: 14px; }
     .product-top { display: flex; justify-content: space-between; gap: 12px; }
     .mini-label { font-size: 12px; color: #64748b; margin-bottom: 4px; }
     .product-code { font-size: 16px; font-weight: 700; }
     .product-price { font-size: 18px; font-weight: 800; text-align: right; line-height: 1.3; }
+
     .color-list { display: none; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
     .color-list.open { display: flex; }
     .color-pill {
@@ -101,6 +108,7 @@
       border-radius: 12px; padding: 8px 12px; background: #fff; color: #111827; font-size: 13px; font-weight: 700;
       cursor: pointer;
     }
+
     .card-button {
       width: 100%; border: 0; background: #111827; color: white; border-radius: 14px; padding: 12px 14px;
       font-size: 14px; font-weight: 700;
@@ -108,6 +116,7 @@
     .empty {
       background: white; border: 1px dashed #cbd5e1; border-radius: 24px; padding: 40px; text-align: center; color: #64748b; margin-top: 16px;
     }
+
     .footer { border-top: 1px solid #e5e7eb; background: white; margin-top: 40px; }
     .footer-grid {
       max-width: 1280px; margin: 0 auto; padding: 16px; display: grid; grid-template-columns: minmax(0,1fr) minmax(320px,420px);
@@ -120,16 +129,19 @@
       display: inline-flex; align-items: center; border: 1px solid #d1d5db; border-radius: 999px; padding: 7px 12px;
       background: white; font-size: 13px; font-weight: 700;
     }
+
     .breadcrumb {
       display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 12px; padding: 0 2px;
     }
     .breadcrumb-text { font-size: 14px; color: #64748b; }
+
     .page-view { display: none; }
     .page-view.active { display: block; }
     .hide-on-category { display: block; }
     .only-category { display: none; }
     body.category-mode .hide-on-category { display: none !important; }
     body.category-mode .only-category { display: block !important; }
+
     .lang-popup {
       position: absolute; top: calc(100% + 8px); right: 0; background: #fff; border: 1px solid #e5e7eb;
       border-radius: 16px; padding: 8px; box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12); display: none; min-width: 160px;
@@ -141,6 +153,7 @@
     }
     .lang-option:hover { background: #f8fafc; }
     .lang-wrap { position: relative; }
+
     @media (max-width: 900px) {
       .hero-grid, .footer-grid { grid-template-columns: 1fr; }
       .hero-title { font-size: 34px; }
@@ -176,7 +189,7 @@
   <main class="container">
     <div class="breadcrumb only-category">
       <button class="btn" id="backHomeBtn">← 返回首页</button>
-      <div class="breadcrumb-text" id="breadcrumbText">当前分类：10 RMB</div>
+      <div class="breadcrumb-text" id="breadcrumbText">当前分类：13 RMB</div>
     </div>
 
     <div id="homeView" class="page-view active">
@@ -243,7 +256,7 @@
             <p class="section-desc" id="productsDesc">这里是当前价格分类下的全部款式。</p>
           </div>
           <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
-            <div class="control-row only-category">
+            <div class="only-category" style="display:flex;gap:8px;flex-wrap:wrap;">
               <button class="btn" id="categoryLayoutSingle">☰ 单排</button>
               <button class="btn active" id="categoryLayoutDouble">⊞ 双排</button>
             </div>
@@ -275,7 +288,7 @@
   <a id="zaloFloatButton" href="https://zalo.me/0708480027" target="_blank" rel="noopener noreferrer" style="position:fixed;right:18px;bottom:22px;width:58px;height:58px;border-radius:999px;background:#0068ff;color:#fff;display:flex;align-items:center;justify-content:center;text-decoration:none;font-weight:800;font-size:14px;box-shadow:0 10px 24px rgba(0,104,255,0.28);z-index:99;">Zalo</a>
 
   <script>
-    const PRICES = [10, 11, 12, 12.5, 13, 13.5, 14, 15];
+    const BASE_PRICES = [10, 11, 12, 12.5, 13, 13.5, 14, 15];
     const DISPLAY_PRICE_MAP = {
       10: 13,
       11: 14,
@@ -313,7 +326,6 @@
         productDisplay: "产品展示区",
         productDisplayDesc: "这里是当前价格分类下的全部款式。",
         noData: "没有找到对应款式",
-        footer: "档口位置",
         contactHint: "电话 / Zalo：0708480027",
         featured: "主推",
         newest: "新品",
@@ -352,7 +364,6 @@
         productDisplay: "Khu trưng bày sản phẩm",
         productDisplayDesc: "Đây là toàn bộ mẫu trong khu giá hiện tại.",
         noData: "Không tìm thấy mẫu phù hợp",
-        footer: "Vị trí sạp hàng",
         contactHint: "Điện thoại / Zalo: 0708480027",
         featured: "Nổi bật",
         newest: "Mới",
@@ -365,7 +376,7 @@
         currency: "VND",
         soldToday: "Đã bán hôm nay",
         addressTitle: "Vị trí sạp hàng",
-        addressText: "广州市荔湾区十三行路 1 号 新中国大厦 6 楼 A601B档"
+        addressText: "Sạp A601B, tầng 6, Tòa nhà Tân Trung Quốc, số 1 đường Shisanhang, quận Lệ Loan, Quảng Châu"
       }
     };
 
@@ -394,10 +405,11 @@
     function createProducts() {
       return Array.from({ length: 200 }, (_, index) => {
         const id = index + 1;
+        const basePrice = BASE_PRICES[index % BASE_PRICES.length];
         return {
           id,
           code: `AT-${String(id).padStart(4, "0")}`,
-          price: PRICES[index % PRICES.length],
+          basePrice,
           colors: SAMPLE_COLORS[index % SAMPLE_COLORS.length],
           isNew: id <= 18,
           featured: id % 9 === 0,
@@ -415,42 +427,53 @@
     const state = {
       lang: "vi",
       layout: "double",
-      activePrice: null,
+      activeBasePrice: null,
       query: "",
       products: createProducts(),
       page: "home",
       soldToday: getDailySales()
     };
 
-    function t() { return TRANSLATIONS[state.lang] || TRANSLATIONS.vi; }
+    function t() {
+      return TRANSLATIONS[state.lang] || TRANSLATIONS.vi;
+    }
 
-    function formatPrice(priceBase) {
+    function getDisplayPrice(basePrice) {
+      return DISPLAY_PRICE_MAP[basePrice] ?? basePrice;
+    }
+
+    function formatPrice(basePrice) {
       const text = t();
-      const displayPrice = DISPLAY_PRICE_MAP[priceBase] ?? priceBase;
+      const displayPrice = getDisplayPrice(basePrice);
       if (state.lang === "zh") {
         return `${displayPrice} ${text.currency}`;
       }
       return `${Math.round(displayPrice * EXCHANGE_RATE)} ${text.currency}`;
-    } ${text.currency}`;
-      }
-      return `${Math.round(priceRmb * EXCHANGE_RATE)} ${text.currency}`;
     }
 
     function getFilteredProducts() {
       const q = state.query.trim().toLowerCase();
       return state.products.filter(item => {
-        const matchesPrice = state.activePrice == null ? true : item.price === state.activePrice;
-        const matchesQuery = !q ? true : item.code.toLowerCase().includes(q) || item.colors.join(" ").toLowerCase().includes(q);
+        const matchesPrice = state.activeBasePrice == null ? true : item.basePrice === state.activeBasePrice;
+        const matchesQuery = !q
+          ? true
+          : item.code.toLowerCase().includes(q) || item.colors.join(" ").toLowerCase().includes(q);
         return matchesPrice && matchesQuery;
       });
     }
 
-    function getNewestProducts() { return state.products.filter(item => item.isNew).slice(0, 8); }
-    function setText(id, value) { const el = document.getElementById(id); if (el) el.textContent = value; }
+    function getNewestProducts() {
+      return state.products.filter(item => item.isNew).slice(0, 8);
+    }
+
+    function setText(id, value) {
+      const el = document.getElementById(id);
+      if (el) el.textContent = value;
+    }
 
     function openHome() {
       state.page = "home";
-      state.activePrice = null;
+      state.activeBasePrice = null;
       document.body.classList.remove("category-mode");
       document.getElementById("homeView").classList.add("active");
       document.getElementById("categoryView").classList.remove("active");
@@ -459,9 +482,9 @@
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
-    function openCategory(price) {
+    function openCategory(basePrice) {
       state.page = "category";
-      state.activePrice = price;
+      state.activeBasePrice = basePrice;
       document.body.classList.add("category-mode");
       document.getElementById("homeView").classList.remove("active");
       document.getElementById("categoryView").classList.add("active");
@@ -470,7 +493,7 @@
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
-    function openLangPopup() {
+    function toggleLangPopup() {
       document.getElementById("langPopup").classList.toggle("open");
     }
 
@@ -503,7 +526,7 @@
       setText("browseDesc", text.browseByPriceDesc);
       setText("latestTitle", text.latest);
       setText("latestDesc", text.latestDesc);
-      setText("productsTitle", state.activePrice == null ? text.productDisplay : `${text.zoneTitle} ${formatPrice(state.activePrice)}`);
+      setText("productsTitle", state.activeBasePrice == null ? text.productDisplay : `${text.zoneTitle} ${formatPrice(state.activeBasePrice)}`);
       setText("productsDesc", text.productDisplayDesc);
       setText("footerBrand", text.addressTitle);
       setText("footerDesc", text.addressText);
@@ -512,22 +535,22 @@
       document.getElementById("categoryLayoutSingle").textContent = `☰ ${state.lang === "zh" ? "单排" : "1 cột"}`;
       document.getElementById("categoryLayoutDouble").textContent = `⊞ ${state.lang === "zh" ? "双排" : "2 cột"}`;
       document.getElementById("backHomeBtn").textContent = `← ${text.backHome}`;
-      document.getElementById("breadcrumbText").textContent = state.activePrice == null ? text.viewAll : `${text.currentCategory}：${formatPrice(state.activePrice)}`;
+      document.getElementById("breadcrumbText").textContent = state.activeBasePrice == null ? text.viewAll : `${text.currentCategory}：${formatPrice(state.activeBasePrice)}`;
     }
 
     function renderZoneCards() {
       const text = t();
       const wrap = document.getElementById("zoneGrid");
       wrap.innerHTML = "";
-      PRICES.forEach(price => {
+      BASE_PRICES.forEach(basePrice => {
         const card = document.createElement("button");
-        card.className = `zone-card ${state.activePrice === price && state.page === 'category' ? 'active' : ''}`;
+        card.className = `zone-card ${state.activeBasePrice === basePrice && state.page === "category" ? "active" : ""}`;
         card.innerHTML = `
           <div class="zone-small">${text.zoneTitle}</div>
-          <div class="zone-big">${formatPrice(price)}</div>
+          <div class="zone-big">${formatPrice(basePrice)}</div>
           <div class="zone-text">${text.enterZone}</div>
         `;
-        card.onclick = () => openCategory(price);
+        card.onclick = () => openCategory(basePrice);
         wrap.appendChild(card);
       });
     }
@@ -536,10 +559,11 @@
       const text = t();
       const colorHtml = item.colors.map(color => `
         <span class="color-pill">
-          <span class="color-dot" style="background:${COLOR_MAP[color] || '#d1d5db'}"></span>
+          <span class="color-dot" style="background:${COLOR_MAP[color] || "#d1d5db"}"></span>
           ${color}
         </span>
       `).join("");
+
       return `
         <div class="product-card">
           <div class="product-image-wrap">
@@ -557,7 +581,7 @@
               </div>
               <div>
                 <div class="mini-label" style="text-align:right;">${text.price}</div>
-                <div class="product-price">${formatPrice(item.price)}</div>
+                <div class="product-price">${formatPrice(item.basePrice)}</div>
               </div>
             </div>
             <div>
@@ -580,7 +604,9 @@
       const text = t();
       const wrap = document.getElementById("productsWrap");
       const filtered = getFilteredProducts();
-      const resultText = state.activePrice == null ? `${text.viewAll} · ${filtered.length}` : `${text.zoneTitle} ${formatPrice(state.activePrice)} · ${filtered.length}`;
+      const resultText = state.activeBasePrice == null
+        ? `${text.viewAll} · ${filtered.length}`
+        : `${text.zoneTitle} ${formatPrice(state.activeBasePrice)} · ${filtered.length}`;
       setText("resultInfo", resultText);
 
       if (!filtered.length) {
@@ -588,7 +614,7 @@
         return;
       }
 
-      wrap.innerHTML = `<div class="products-grid ${state.layout === 'single' ? 'single' : ''}">${filtered.map(createProductCard).join("")}</div>`;
+      wrap.innerHTML = `<div class="products-grid ${state.layout === "single" ? "single" : ""}">${filtered.map(createProductCard).join("")}</div>`;
     }
 
     function updateButtonStates() {
@@ -603,7 +629,9 @@
       if (!colorList) return;
       colorList.classList.toggle("open");
       const countText = button.dataset.count ? ` (${button.dataset.count})` : "";
-      button.textContent = colorList.classList.contains("open") ? `${text.hideColors}${countText}` : `${text.viewColors}${countText}`;
+      button.textContent = colorList.classList.contains("open")
+        ? `${text.hideColors}${countText}`
+        : `${text.viewColors}${countText}`;
     }
 
     function renderAll() {
@@ -616,21 +644,30 @@
 
     document.getElementById("navLangToggle").onclick = (e) => {
       e.stopPropagation();
-      openLangPopup();
+      toggleLangPopup();
     };
+
     document.getElementById("langOptionZh").onclick = () => {
       state.lang = "zh";
       closeLangPopup();
       renderAll();
     };
+
     document.getElementById("langOptionVi").onclick = () => {
       state.lang = "vi";
       closeLangPopup();
       renderAll();
     };
 
-    document.getElementById("categoryLayoutSingle").onclick = () => { state.layout = "single"; renderAll(); };
-    document.getElementById("categoryLayoutDouble").onclick = () => { state.layout = "double"; renderAll(); };
+    document.getElementById("categoryLayoutSingle").onclick = () => {
+      state.layout = "single";
+      renderAll();
+    };
+
+    document.getElementById("categoryLayoutDouble").onclick = () => {
+      state.layout = "double";
+      renderAll();
+    };
 
     document.getElementById("navHomeBtn").onclick = () => {
       openHome();
@@ -658,11 +695,12 @@
     };
 
     document.getElementById("backHomeBtn").onclick = () => openHome();
+
     document.getElementById("searchInput").addEventListener("input", function(e) {
       state.query = e.target.value;
       if (state.page === "home" && e.target.value.trim()) {
         state.page = "category";
-        state.activePrice = null;
+        state.activeBasePrice = null;
         document.body.classList.add("category-mode");
         document.getElementById("homeView").classList.remove("active");
         document.getElementById("categoryView").classList.add("active");
@@ -680,7 +718,7 @@
     console.assert(Array.isArray(state.products), "Products should be an array");
     console.assert(state.products.length === 200, "Products should contain 200 items");
     console.assert(state.products.every(item => typeof item.code === "string" && item.code.length > 0), "Each product should have a code");
-    console.assert(state.products.every(item => PRICES.includes(item.price)), "Each product should have a valid price");
+    console.assert(state.products.every(item => BASE_PRICES.includes(item.basePrice)), "Each product should have a valid base price");
     console.assert(state.soldToday >= 1000, "Daily sold should not be below 1000");
 
     renderAll();
