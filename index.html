@@ -143,6 +143,8 @@
         <button class="btn" id="navPriceZone">价格分类</button>
         <button class="btn" id="navNewArrival">新品上新</button>
         <button class="btn" id="navContact">联系我们</button>
+        <button class="btn" id="navLangZh">中文</button>
+        <button class="btn active" id="navLangVi">Tiếng Việt</button>
       </nav>
     </div>
   </header>
@@ -177,20 +179,7 @@
 
         <div class="panel">
           <div class="control-grid">
-            <div>
-              <div class="control-label" id="langLabel">🌐 语言</div>
-              <div class="control-row">
-                <button class="btn" id="langZh">中文</button>
-                <button class="btn active" id="langVi">Tiếng Việt</button>
-              </div>
-            </div>
-            <div>
-              <div class="control-label" id="layoutLabel">展示方式</div>
-              <div class="control-row">
-                <button class="btn" id="layoutSingle">☰ 单排</button>
-                <button class="btn active" id="layoutDouble">⊞ 双排</button>
-              </div>
-            </div>
+            <div></div>
           </div>
 
           <div style="margin-top: 18px;">
@@ -205,7 +194,7 @@
         </div>
       </section>
 
-     <section class="section" id="priceSection">
+      <section class="section">
         <div class="section-head">
           <div>
             <h2 class="section-title" id="browseTitle">按价格看款</h2>
@@ -215,7 +204,7 @@
         <div class="zone-grid" id="zoneGrid"></div>
       </section>
 
-      <section class="section hide-on-category" id="newSection">
+      <section class="section hide-on-category">
         <div class="section-head">
           <div>
             <h2 class="section-title" id="latestTitle">最新上新</h2>
@@ -231,33 +220,39 @@
         <div class="section-head">
           <div>
             <h2 class="section-title" id="productsTitle">产品展示区</h2>
-            <p class="section-desc" id="productsDesc">支持单排 / 双排切换，适合手机给客户发链接直接看款。</p>
+            <p class="section-desc" id="productsDesc">这里是当前价格分类下的全部款式。</p>
           </div>
-          <div style="font-size:14px;color:#64748b;font-weight:600;" id="resultInfo">查看全部 · 200</div>
+          <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+            <div class="control-row only-category">
+              <button class="btn" id="categoryLayoutSingle">☰ 单排</button>
+              <button class="btn active" id="categoryLayoutDouble">⊞ 双排</button>
+            </div>
+            <div style="font-size:14px;color:#64748b;font-weight:600;" id="resultInfo">查看全部 · 200</div>
+          </div>
         </div>
         <div id="productsWrap"></div>
       </section>
     </div>
   </main>
 
-  <footer class="footer hide-on-category" id="contactSection">
+  <footer class="footer hide-on-category">
     <div class="footer-grid">
       <div>
         <div style="font-size:20px;font-weight:800;" id="footerBrand">T恤选款中心</div>
         <p class="footer-desc" id="footerDesc">本页面适合做越南批发选款展示，可持续上新。</p>
       </div>
-      <div class="contact-box">
+      <div class="contact-box" id="contactSection">
         <div class="contact-title" id="contactTitle">☎ 联系我们</div>
-        <p class="contact-desc" id="contactDesc">这里可替换成你的 Zalo / Facebook / TikTok / 微信方式</p>
+        <p class="contact-desc" id="contactDesc">电话 / Zalo：0708480027</p>
         <div class="contact-tags">
-          <span class="contact-tag">Zalo</span>
-          <span class="contact-tag">Facebook</span>
-          <span class="contact-tag">TikTok</span>
-          <span class="contact-tag">WeChat</span>
+          <span class="contact-tag">电话：0708480027</span>
+          <span class="contact-tag">Zalo：0708480027</span>
         </div>
       </div>
     </div>
   </footer>
+
+  <a id="zaloFloatButton" href="https://zalo.me/0708480027" target="_blank" rel="noopener noreferrer" style="position:fixed;right:18px;bottom:22px;width:58px;height:58px;border-radius:999px;background:#0068ff;color:#fff;display:flex;align-items:center;justify-content:center;text-decoration:none;font-weight:800;font-size:14px;box-shadow:0 10px 24px rgba(0,104,255,0.28);z-index:99;">Zalo</a>
 
   <script>
     const PRICES = [10, 11, 12, 12.5, 13, 13.5, 14, 15];
@@ -293,7 +288,7 @@
         productDisplayDesc: "这里是当前价格分类下的全部款式。",
         noData: "没有找到对应款式",
         footer: "本页面适合做越南批发选款展示，可持续上新。",
-        contactHint: "这里可替换成你的 Zalo / Facebook / TikTok / 微信方式",
+        contactHint: "电话 / Zalo：0708480027",
         featured: "主推",
         newest: "新品",
         zoneTitle: "价格区",
@@ -330,7 +325,7 @@
         productDisplayDesc: "Đây là toàn bộ mẫu trong khu giá hiện tại.",
         noData: "Không tìm thấy mẫu phù hợp",
         footer: "Trang này phù hợp để làm website chọn mẫu hàng sỉ tại Việt Nam và dễ cập nhật thêm sản phẩm mới.",
-        contactHint: "Có thể thay phần này bằng Zalo / Facebook / TikTok / WeChat của bạn",
+        contactHint: "Điện thoại / Zalo: 0708480027",
         featured: "Nổi bật",
         newest: "Mới",
         zoneTitle: "Khu giá",
@@ -447,8 +442,8 @@
       setText("footerDesc", text.footer);
       setText("contactTitle", `☎ ${text.contact}`);
       setText("contactDesc", text.contactHint);
-      document.getElementById("layoutSingle").textContent = `☰ ${text.single}`;
-      document.getElementById("layoutDouble").textContent = `⊞ ${text.double}`;
+      document.getElementById("categoryLayoutSingle").textContent = `☰ ${text.single}`;
+      document.getElementById("categoryLayoutDouble").textContent = `⊞ ${text.double}`;
       document.getElementById("backHomeBtn").textContent = `← ${text.backHome}`;
       document.getElementById("breadcrumbText").textContent = state.activePrice == null ? text.viewAll : `${text.currentCategory}：${state.activePrice}`;
     }
@@ -542,10 +537,10 @@
     }
 
     function updateButtonStates() {
-      document.getElementById("langZh").classList.toggle("active", state.lang === "zh");
-      document.getElementById("langVi").classList.toggle("active", state.lang === "vi");
-      document.getElementById("layoutSingle").classList.toggle("active", state.layout === "single");
-      document.getElementById("layoutDouble").classList.toggle("active", state.layout === "double");
+      document.getElementById("navLangZh").classList.toggle("active", state.lang === "zh");
+      document.getElementById("navLangVi").classList.toggle("active", state.lang === "vi");
+      document.getElementById("categoryLayoutSingle").classList.toggle("active", state.layout === "single");
+      document.getElementById("categoryLayoutDouble").classList.toggle("active", state.layout === "double");
       document.getElementById("navHomeBtn").classList.toggle("active", state.page === "home");
     }
 
@@ -558,36 +553,12 @@
       updateButtonStates();
     }
 
-    document.getElementById("langZh").onclick = () => { state.lang = "zh"; renderAll(); };
-    document.getElementById("langVi").onclick = () => { state.lang = "vi"; renderAll(); };
-    document.getElementById("layoutSingle").onclick = () => { state.layout = "single"; renderAll(); };
-    document.getElementById("layoutDouble").onclick = () => { state.layout = "double"; renderAll(); };
-    document.getElementById("navHomeBtn").onclick = () => {
-  openHome();
-};
-
-document.getElementById("navPriceZone").onclick = () => {
-  openHome();
-  setTimeout(() => {
-    document.getElementById("priceSection")?.scrollIntoView({ behavior: "smooth", block: "start" });
-  }, 50);
-};
-
-document.getElementById("navNewArrival").onclick = () => {
-  openHome();
-  setTimeout(() => {
-    document.getElementById("newSection")?.scrollIntoView({ behavior: "smooth", block: "start" });
-  }, 50);
-};
-
-document.getElementById("navContact").onclick = () => {
-  openHome();
-  setTimeout(() => {
-    document.getElementById("contactSection")?.scrollIntoView({ behavior: "smooth", block: "start" });
-  }, 50);
-};
-
-document.getElementById("backHomeBtn").onclick = () => openHome();
+    document.getElementById("navLangZh").onclick = () => { state.lang = "zh"; renderAll(); };
+    document.getElementById("navLangVi").onclick = () => { state.lang = "vi"; renderAll(); };
+    document.getElementById("categoryLayoutSingle").onclick = () => { state.layout = "single"; renderAll(); };
+    document.getElementById("categoryLayoutDouble").onclick = () => { state.layout = "double"; renderAll(); };
+    document.getElementById("navHomeBtn").onclick = () => openHome();
+    document.getElementById("backHomeBtn").onclick = () => openHome();
     document.getElementById("searchInput").addEventListener("input", function(e) {
       state.query = e.target.value;
       if (state.page === "home" && e.target.value.trim()) {
