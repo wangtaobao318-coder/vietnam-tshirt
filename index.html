@@ -722,22 +722,25 @@
       ["Hồng", "Trắng", "Kem", "Xám"],
       ["Xám", "Đen", "Trắng", "Kem"]
     ];
+function createProducts() {
+  const rows = [
+    { code: "Ata-00001", basePrice: 10, isNew: true },
+    { code: "Ata-00002", basePrice: 10, isNew: false },
+    { code: "Atb-00001", basePrice: 11, isNew: true },
+    { code: "Atb-00002", basePrice: 11, isNew: false }
+  ];
 
-    function createProducts() {
-      return Array.from({ length: 200 }, (_, index) => {
-        const id = index + 1;
-        const basePrice = BASE_PRICES[index % BASE_PRICES.length];
-        return {
-          id,
-          code: `AT-${String(id).padStart(4, "0")}`,
-          basePrice,
-          colors: SAMPLE_COLORS[index % SAMPLE_COLORS.length],
-          isNew: id <= 18,
-          featured: id % 9 === 0,
-          image: `https://picsum.photos/seed/tshirt-${id}/900/1200`
-        };
-      });
-    }
+  return rows.map((item, index) => ({
+    id: index + 1,
+    code: item.code,
+    basePrice: item.basePrice,
+    colors: [],
+    isNew: item.isNew,
+    featured: false,
+    image: `https://res.cloudinary.com/df9x8bpyj/image/upload/${item.code}.jpg`
+  }));
+}
+
 
     function getDailySales() {
       const now = new Date();
