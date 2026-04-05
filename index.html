@@ -50,7 +50,7 @@
     .stat { border: 1px solid #e5e7eb; background: #f8fafc; border-radius: 18px; padding: 14px 16px; min-width: 110px; }
     .stat-label { font-size: 12px; color: #64748b; margin-bottom: 6px; }
     .stat-value { font-size: 24px; font-weight: 900; }
-    .control-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .control-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
     .control-label { font-size: 14px; font-weight: 700; margin-bottom: 10px; color: #111827; }
     .control-row { display: flex; gap: 8px; flex-wrap: wrap; }
     .search-input {
@@ -69,7 +69,12 @@
     .zone-big { font-size: 28px; font-weight: 900; margin-top: 4px; }
     .zone-text { font-size: 14px; color: #475569; margin-top: 10px; }
     .zone-card.active .zone-small, .zone-card.active .zone-text { color: rgba(255,255,255,0.84); }
-    .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; margin-top: 16px; }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
     .products-grid.single { grid-template-columns: 1fr; }
     .product-card {
       background: white; border: 1px solid #e5e7eb; border-radius: 20px; overflow: hidden;
@@ -86,12 +91,18 @@
     .mini-label { font-size: 12px; color: #64748b; margin-bottom: 4px; }
     .product-code { font-size: 16px; font-weight: 700; }
     .product-price { font-size: 20px; font-weight: 800; text-align: right; }
-    .color-list { display: flex; gap: 8px; flex-wrap: wrap; }
+    .color-list { display: none; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+    .color-list.open { display: flex; }
     .color-pill {
       display: inline-flex; align-items: center; gap: 8px; border: 1px solid #e5e7eb; border-radius: 999px;
       padding: 6px 10px; font-size: 12px; color: #334155; background: white;
     }
     .color-dot { width: 12px; height: 12px; border-radius: 999px; border: 1px solid rgba(0,0,0,0.12); display: inline-block; }
+    .color-toggle {
+      display: inline-flex; align-items: center; justify-content: center; border: 1px solid #d1d5db;
+      border-radius: 12px; padding: 8px 12px; background: #fff; color: #111827; font-size: 13px; font-weight: 700;
+      cursor: pointer;
+    }
     .card-button {
       width: 100%; border: 0; background: #111827; color: white; border-radius: 14px; padding: 12px 14px;
       font-size: 14px; font-weight: 700;
@@ -124,7 +135,6 @@
     @media (max-width: 900px) {
       .hero-grid, .footer-grid { grid-template-columns: 1fr; }
       .hero-title { font-size: 34px; }
-      .control-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -143,8 +153,7 @@
         <button class="btn" id="navPriceZone">价格分类</button>
         <button class="btn" id="navNewArrival">新品上新</button>
         <button class="btn" id="navContact">联系我们</button>
-        <button class="btn" id="navLangZh">中文</button>
-        <button class="btn active" id="navLangVi">Tiếng Việt</button>
+        <button class="btn active" id="navLangToggle">Tiếng Việt / 中文</button>
       </nav>
     </div>
   </header>
@@ -178,9 +187,7 @@
         </div>
 
         <div class="panel">
-          <div class="control-grid">
-            <div></div>
-          </div>
+          <div class="control-grid"></div>
 
           <div style="margin-top: 18px;">
             <div class="control-label" id="searchLabel">🔍 搜索款号 / 颜色</div>
@@ -194,7 +201,7 @@
         </div>
       </section>
 
-      <section class="section">
+      <section class="section" id="priceSection">
         <div class="section-head">
           <div>
             <h2 class="section-title" id="browseTitle">按价格看款</h2>
@@ -204,7 +211,7 @@
         <div class="zone-grid" id="zoneGrid"></div>
       </section>
 
-      <section class="section hide-on-category">
+      <section class="section hide-on-category" id="newSection">
         <div class="section-head">
           <div>
             <h2 class="section-title" id="latestTitle">最新上新</h2>
@@ -235,13 +242,13 @@
     </div>
   </main>
 
-  <footer class="footer hide-on-category">
+  <footer class="footer hide-on-category" id="contactSection">
     <div class="footer-grid">
       <div>
         <div style="font-size:20px;font-weight:800;" id="footerBrand">T恤选款中心</div>
         <p class="footer-desc" id="footerDesc">本页面适合做越南批发选款展示，可持续上新。</p>
       </div>
-      <div class="contact-box" id="contactSection">
+      <div class="contact-box">
         <div class="contact-title" id="contactTitle">☎ 联系我们</div>
         <p class="contact-desc" id="contactDesc">电话 / Zalo：0708480027</p>
         <div class="contact-tags">
@@ -269,7 +276,7 @@
         heroTitle: "越南地区 T恤批发展示站",
         heroDesc: "首页点击价格即可看款。每个款展示图片、款号、颜色，支持中文 / 越南语切换，适合手机浏览与持续上新。",
         total: "总款数",
-        language: "语言",
+        language: "语言切换",
         layout: "展示方式",
         single: "单排",
         double: "双排",
@@ -293,7 +300,9 @@
         newest: "新品",
         zoneTitle: "价格区",
         currentCategory: "当前分类",
-        backHome: "返回首页"
+        backHome: "返回首页",
+        viewColors: "查看颜色",
+        hideColors: "收起颜色"
       },
       vi: {
         brand: "Kho Mẫu Áo Thun",
@@ -306,7 +315,7 @@
         heroTitle: "Website trưng bày áo thun cho thị trường Việt Nam",
         heroDesc: "Bấm vào mức giá ở trang chủ để xem mẫu. Mỗi mẫu hiển thị hình ảnh, mã hàng và màu sắc, hỗ trợ chuyển đổi tiếng Trung / tiếng Việt, phù hợp xem trên điện thoại và cập nhật hàng mới nhanh.",
         total: "Tổng số mẫu",
-        language: "Ngôn ngữ",
+        language: "Chuyển ngôn ngữ",
         layout: "Kiểu hiển thị",
         single: "1 cột",
         double: "2 cột",
@@ -330,19 +339,21 @@
         newest: "Mới",
         zoneTitle: "Khu giá",
         currentCategory: "Phân loại hiện tại",
-        backHome: "Quay lại trang chủ"
+        backHome: "Quay lại trang chủ",
+        viewColors: "Xem màu sắc",
+        hideColors: "Ẩn màu sắc"
       }
     };
 
     const SAMPLE_COLORS = [
-      ["Trắng", "Đen"],
-      ["Trắng", "Xám"],
-      ["Đen", "Xám"],
-      ["Kem", "Đen"],
-      ["Xanh", "Trắng"],
-      ["Nâu", "Kem"],
-      ["Hồng", "Trắng"],
-      ["Xám", "Đen"]
+      ["Trắng", "Đen", "Xám", "Kem", "Xanh", "Nâu", "Hồng", "Đỏ"],
+      ["Trắng", "Xám", "Kem", "Đen"],
+      ["Đen", "Xám", "Trắng"],
+      ["Kem", "Đen", "Nâu", "Trắng", "Xanh"],
+      ["Xanh", "Trắng", "Đen"],
+      ["Nâu", "Kem", "Trắng", "Đen"],
+      ["Hồng", "Trắng", "Kem", "Xám"],
+      ["Xám", "Đen", "Trắng", "Kem"]
     ];
 
     const COLOR_MAP = {
@@ -352,7 +363,8 @@
       "Kem": "#f3e7c9",
       "Xanh": "#7dd3fc",
       "Nâu": "#8b5e3c",
-      "Hồng": "#f9a8d4"
+      "Hồng": "#f9a8d4",
+      "Đỏ": "#ef4444"
     };
 
     function createProducts() {
@@ -421,14 +433,13 @@
       setText("navPriceZone", text.priceZone);
       setText("navNewArrival", text.newArrival);
       setText("navContact", text.contact);
+      setText("navLangToggle", state.lang === "vi" ? "Tiếng Việt / 中文" : "中文 / Tiếng Việt");
       setText("heroTag", text.priceZone);
       setText("heroTitle", text.heroTitle);
       setText("heroDesc", text.heroDesc);
       setText("statTotalLabel", text.total);
       setText("statPriceLabel", text.priceZone);
       setText("statNewLabel", text.newArrival);
-      setText("langLabel", `🌐 ${text.language}`);
-      setText("layoutLabel", text.layout);
       setText("searchLabel", `🔍 ${text.search}`);
       document.getElementById("searchInput").placeholder = text.search;
       setText("priceLabel", text.priceZone);
@@ -449,7 +460,6 @@
     }
 
     function renderSmallPriceButtons() {
-      const text = t();
       const wrap = document.getElementById("smallPriceButtons");
       wrap.innerHTML = "";
       PRICES.forEach(price => {
@@ -508,6 +518,7 @@
             </div>
             <div>
               <div class="mini-label">${text.color}</div>
+              <button class="color-toggle" type="button" data-count="${item.colors.length}" onclick="toggleColors(this)">${text.viewColors} (${item.colors.length})</button>
               <div class="color-list">${colorHtml}</div>
             </div>
             <button class="card-button">${text.consult}</button>
@@ -537,11 +548,19 @@
     }
 
     function updateButtonStates() {
-      document.getElementById("navLangZh").classList.toggle("active", state.lang === "zh");
-      document.getElementById("navLangVi").classList.toggle("active", state.lang === "vi");
+      document.getElementById("navLangToggle").classList.add("active");
       document.getElementById("categoryLayoutSingle").classList.toggle("active", state.layout === "single");
       document.getElementById("categoryLayoutDouble").classList.toggle("active", state.layout === "double");
       document.getElementById("navHomeBtn").classList.toggle("active", state.page === "home");
+    }
+
+    function toggleColors(button) {
+      const text = t();
+      const colorList = button.nextElementSibling;
+      if (!colorList) return;
+      colorList.classList.toggle("open");
+      const countText = button.dataset.count ? ` (${button.dataset.count})` : "";
+      button.textContent = colorList.classList.contains("open") ? `${text.hideColors}${countText}` : `${text.viewColors}${countText}`;
     }
 
     function renderAll() {
@@ -553,11 +572,38 @@
       updateButtonStates();
     }
 
-    document.getElementById("navLangZh").onclick = () => { state.lang = "zh"; renderAll(); };
-    document.getElementById("navLangVi").onclick = () => { state.lang = "vi"; renderAll(); };
+    document.getElementById("navLangToggle").onclick = () => {
+      state.lang = state.lang === "vi" ? "zh" : "vi";
+      renderAll();
+    };
     document.getElementById("categoryLayoutSingle").onclick = () => { state.layout = "single"; renderAll(); };
     document.getElementById("categoryLayoutDouble").onclick = () => { state.layout = "double"; renderAll(); };
-    document.getElementById("navHomeBtn").onclick = () => openHome();
+
+    document.getElementById("navHomeBtn").onclick = () => {
+      openHome();
+    };
+
+    document.getElementById("navPriceZone").onclick = () => {
+      openHome();
+      setTimeout(() => {
+        document.getElementById("priceSection")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 50);
+    };
+
+    document.getElementById("navNewArrival").onclick = () => {
+      openHome();
+      setTimeout(() => {
+        document.getElementById("newSection")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 50);
+    };
+
+    document.getElementById("navContact").onclick = () => {
+      openHome();
+      setTimeout(() => {
+        document.getElementById("contactSection")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 50);
+    };
+
     document.getElementById("backHomeBtn").onclick = () => openHome();
     document.getElementById("searchInput").addEventListener("input", function(e) {
       state.query = e.target.value;
