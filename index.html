@@ -14,7 +14,7 @@
     }
     .container { max-width: 1280px; margin: 0 auto; padding: 16px; }
     .header {
-      position: sticky; top: 0; z-index: 20; background: rgba(255,255,255,0.95);
+      position: sticky; top: 0; z-index: 30; background: rgba(255,255,255,0.95);
       backdrop-filter: blur(8px); border-bottom: 1px solid #e5e7eb;
     }
     .header-inner {
@@ -28,7 +28,7 @@
     }
     .brand-title { font-weight: 800; font-size: 18px; }
     .brand-subtitle { color: #64748b; font-size: 12px; margin-top: 4px; }
-    .nav { display: flex; gap: 8px; flex-wrap: wrap; }
+    .nav { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
     .btn, .zone-card, .card-button {
       cursor: pointer; transition: all 0.2s ease; border: 1px solid #d1d5db;
       background: white; color: #111827; border-radius: 14px; padding: 10px 14px; font-size: 14px; font-weight: 600;
@@ -56,17 +56,16 @@
     .search-input {
       width: 100%; border: 1px solid #d1d5db; border-radius: 16px; padding: 12px 14px; font-size: 14px; outline: none;
     }
-    .price-grid-small { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
     .section { margin-top: 28px; }
     .section-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; flex-wrap: wrap; }
     .section-title { font-size: 28px; font-weight: 900; margin: 0; }
-    .zone-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 12px; margin-top: 16px; }
+    .zone-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-top: 16px; }
     .zone-card {
       text-align: left; background: white; border-radius: 20px; padding: 16px;
       box-shadow: 0 4px 18px rgba(15, 23, 42, 0.05);
     }
     .zone-small { font-size: 12px; color: #64748b; }
-    .zone-big { font-size: 28px; font-weight: 900; margin-top: 4px; }
+    .zone-big { font-size: 24px; font-weight: 900; margin-top: 8px; }
     .zone-text { font-size: 14px; color: #475569; margin-top: 10px; }
     .zone-card.active .zone-small, .zone-card.active .zone-text { color: rgba(255,255,255,0.84); }
     .products-grid {
@@ -90,7 +89,7 @@
     .product-top { display: flex; justify-content: space-between; gap: 12px; }
     .mini-label { font-size: 12px; color: #64748b; margin-bottom: 4px; }
     .product-code { font-size: 16px; font-weight: 700; }
-    .product-price { font-size: 20px; font-weight: 800; text-align: right; }
+    .product-price { font-size: 18px; font-weight: 800; text-align: right; line-height: 1.3; }
     .color-list { display: none; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
     .color-list.open { display: flex; }
     .color-pill {
@@ -132,6 +131,17 @@
     .only-category { display: none; }
     body.category-mode .hide-on-category { display: none !important; }
     body.category-mode .only-category { display: block !important; }
+    .lang-popup {
+      position: absolute; top: calc(100% + 8px); right: 0; background: #fff; border: 1px solid #e5e7eb;
+      border-radius: 16px; padding: 8px; box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12); display: none; min-width: 160px;
+    }
+    .lang-popup.open { display: block; }
+    .lang-option {
+      width: 100%; border: 0; background: transparent; text-align: left; padding: 10px 12px; border-radius: 10px;
+      font-size: 14px; font-weight: 700; cursor: pointer; color: #111827;
+    }
+    .lang-option:hover { background: #f8fafc; }
+    .lang-wrap { position: relative; }
     @media (max-width: 900px) {
       .hero-grid, .footer-grid { grid-template-columns: 1fr; }
       .hero-title { font-size: 34px; }
@@ -153,7 +163,13 @@
         <button class="btn" id="navPriceZone">价格分类</button>
         <button class="btn" id="navNewArrival">新品上新</button>
         <button class="btn" id="navContact">联系我们</button>
-        <button class="btn active" id="navLangToggle">Tiếng Việt / 中文</button>
+        <div class="lang-wrap">
+          <button class="btn" id="navLangToggle">语言切换</button>
+          <div class="lang-popup" id="langPopup">
+            <button class="lang-option" id="langOptionZh">中文</button>
+            <button class="lang-option" id="langOptionVi">Tiếng Việt</button>
+          </div>
+        </div>
       </nav>
     </div>
   </header>
@@ -161,7 +177,7 @@
   <main class="container">
     <div class="breadcrumb only-category">
       <button class="btn" id="backHomeBtn">← 返回首页</button>
-      <div class="breadcrumb-text" id="breadcrumbText">当前分类：10</div>
+      <div class="breadcrumb-text" id="breadcrumbText">当前分类：10 RMB</div>
     </div>
 
     <div id="homeView" class="page-view active">
@@ -188,15 +204,9 @@
 
         <div class="panel">
           <div class="control-grid"></div>
-
           <div style="margin-top: 18px;">
             <div class="control-label" id="searchLabel">🔍 搜索款号 / 颜色</div>
             <input class="search-input" id="searchInput" placeholder="搜索款号 / 颜色" />
-          </div>
-
-          <div style="margin-top: 18px;">
-            <div class="control-label" id="priceLabel">价格分类</div>
-            <div class="price-grid-small" id="smallPriceButtons"></div>
           </div>
         </div>
       </section>
@@ -263,23 +273,19 @@
 
   <script>
     const PRICES = [10, 11, 12, 12.5, 13, 13.5, 14, 15];
+    const EXCHANGE_RATE = 4000;
 
     const TRANSLATIONS = {
       zh: {
         brand: "T恤选款中心",
         subtitle: "按价格快速找款 · 中越双语展示 · 持续上新",
         home: "首页",
-        all: "全部",
         newArrival: "新品上新",
         priceZone: "价格分类",
         contact: "联系我们",
         heroTitle: "越南地区 T恤批发展示站",
         heroDesc: "首页点击价格即可看款。每个款展示图片、款号、颜色，支持中文 / 越南语切换，适合手机浏览与持续上新。",
         total: "总款数",
-        language: "语言切换",
-        layout: "展示方式",
-        single: "单排",
-        double: "双排",
         search: "搜索款号 / 颜色",
         latest: "最新上新",
         latestDesc: "优先展示最近新增的款式，方便客户快速看新货。",
@@ -302,23 +308,20 @@
         currentCategory: "当前分类",
         backHome: "返回首页",
         viewColors: "查看颜色",
-        hideColors: "收起颜色"
+        hideColors: "收起颜色",
+        languageToggle: "语言切换",
+        currency: "RMB"
       },
       vi: {
         brand: "Kho Mẫu Áo Thun",
         subtitle: "Xem mẫu theo giá · Song ngữ Trung - Việt · Cập nhật liên tục",
         home: "Trang chủ",
-        all: "Tất cả",
         newArrival: "Hàng mới",
         priceZone: "Phân loại giá",
         contact: "Liên hệ",
         heroTitle: "Website trưng bày áo thun cho thị trường Việt Nam",
         heroDesc: "Bấm vào mức giá ở trang chủ để xem mẫu. Mỗi mẫu hiển thị hình ảnh, mã hàng và màu sắc, hỗ trợ chuyển đổi tiếng Trung / tiếng Việt, phù hợp xem trên điện thoại và cập nhật hàng mới nhanh.",
         total: "Tổng số mẫu",
-        language: "Chuyển ngôn ngữ",
-        layout: "Kiểu hiển thị",
-        single: "1 cột",
-        double: "2 cột",
         search: "Tìm mã hàng / màu sắc",
         latest: "Mẫu mới cập nhật",
         latestDesc: "Ưu tiên hiển thị các mẫu mới thêm để khách xem hàng nhanh hơn.",
@@ -341,7 +344,9 @@
         currentCategory: "Phân loại hiện tại",
         backHome: "Quay lại trang chủ",
         viewColors: "Xem màu sắc",
-        hideColors: "Ẩn màu sắc"
+        hideColors: "Ẩn màu sắc",
+        languageToggle: "Chuyển ngôn ngữ",
+        currency: "VND"
       }
     };
 
@@ -393,6 +398,14 @@
 
     function t() { return TRANSLATIONS[state.lang] || TRANSLATIONS.vi; }
 
+    function formatPrice(priceRmb) {
+      const text = t();
+      if (state.lang === "zh") {
+        return `${priceRmb} ${text.currency}`;
+      }
+      return `${Math.round(priceRmb * EXCHANGE_RATE)} ${text.currency}`;
+    }
+
     function getFilteredProducts() {
       const q = state.query.trim().toLowerCase();
       return state.products.filter(item => {
@@ -411,6 +424,7 @@
       document.body.classList.remove("category-mode");
       document.getElementById("homeView").classList.add("active");
       document.getElementById("categoryView").classList.remove("active");
+      closeLangPopup();
       renderAll();
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
@@ -421,8 +435,17 @@
       document.body.classList.add("category-mode");
       document.getElementById("homeView").classList.remove("active");
       document.getElementById("categoryView").classList.add("active");
+      closeLangPopup();
       renderAll();
       window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function openLangPopup() {
+      document.getElementById("langPopup").classList.toggle("open");
+    }
+
+    function closeLangPopup() {
+      document.getElementById("langPopup").classList.remove("open");
     }
 
     function renderTexts() {
@@ -433,7 +456,9 @@
       setText("navPriceZone", text.priceZone);
       setText("navNewArrival", text.newArrival);
       setText("navContact", text.contact);
-      setText("navLangToggle", state.lang === "vi" ? "Tiếng Việt / 中文" : "中文 / Tiếng Việt");
+      setText("navLangToggle", text.languageToggle);
+      setText("langOptionZh", "中文");
+      setText("langOptionVi", "Tiếng Việt");
       setText("heroTag", text.priceZone);
       setText("heroTitle", text.heroTitle);
       setText("heroDesc", text.heroDesc);
@@ -442,12 +467,11 @@
       setText("statNewLabel", text.newArrival);
       setText("searchLabel", `🔍 ${text.search}`);
       document.getElementById("searchInput").placeholder = text.search;
-      setText("priceLabel", text.priceZone);
       setText("browseTitle", text.browseByPrice);
       setText("browseDesc", text.browseByPriceDesc);
       setText("latestTitle", text.latest);
       setText("latestDesc", text.latestDesc);
-      setText("productsTitle", state.activePrice == null ? text.productDisplay : `${text.zoneTitle} ${state.activePrice}`);
+      setText("productsTitle", state.activePrice == null ? text.productDisplay : `${text.zoneTitle} ${formatPrice(state.activePrice)}`);
       setText("productsDesc", text.productDisplayDesc);
       setText("footerBrand", text.brand);
       setText("footerDesc", text.footer);
@@ -456,19 +480,7 @@
       document.getElementById("categoryLayoutSingle").textContent = `☰ ${text.single}`;
       document.getElementById("categoryLayoutDouble").textContent = `⊞ ${text.double}`;
       document.getElementById("backHomeBtn").textContent = `← ${text.backHome}`;
-      document.getElementById("breadcrumbText").textContent = state.activePrice == null ? text.viewAll : `${text.currentCategory}：${state.activePrice}`;
-    }
-
-    function renderSmallPriceButtons() {
-      const wrap = document.getElementById("smallPriceButtons");
-      wrap.innerHTML = "";
-      PRICES.forEach(price => {
-        const btn = document.createElement("button");
-        btn.className = `btn ${state.activePrice === price ? "active" : ""}`;
-        btn.textContent = price;
-        btn.onclick = () => openCategory(price);
-        wrap.appendChild(btn);
-      });
+      document.getElementById("breadcrumbText").textContent = state.activePrice == null ? text.viewAll : `${text.currentCategory}：${formatPrice(state.activePrice)}`;
     }
 
     function renderZoneCards() {
@@ -480,7 +492,7 @@
         card.className = `zone-card ${state.activePrice === price && state.page === 'category' ? 'active' : ''}`;
         card.innerHTML = `
           <div class="zone-small">${text.zoneTitle}</div>
-          <div class="zone-big">${price}</div>
+          <div class="zone-big">${formatPrice(price)}</div>
           <div class="zone-text">${text.enterZone}</div>
         `;
         card.onclick = () => openCategory(price);
@@ -513,7 +525,7 @@
               </div>
               <div>
                 <div class="mini-label" style="text-align:right;">${text.price}</div>
-                <div class="product-price">${item.price}</div>
+                <div class="product-price">${formatPrice(item.price)}</div>
               </div>
             </div>
             <div>
@@ -536,7 +548,7 @@
       const text = t();
       const wrap = document.getElementById("productsWrap");
       const filtered = getFilteredProducts();
-      const resultText = state.activePrice == null ? `${text.viewAll} · ${filtered.length}` : `${text.zoneTitle} ${state.activePrice} · ${filtered.length}`;
+      const resultText = state.activePrice == null ? `${text.viewAll} · ${filtered.length}` : `${text.zoneTitle} ${formatPrice(state.activePrice)} · ${filtered.length}`;
       setText("resultInfo", resultText);
 
       if (!filtered.length) {
@@ -548,7 +560,6 @@
     }
 
     function updateButtonStates() {
-      document.getElementById("navLangToggle").classList.add("active");
       document.getElementById("categoryLayoutSingle").classList.toggle("active", state.layout === "single");
       document.getElementById("categoryLayoutDouble").classList.toggle("active", state.layout === "double");
       document.getElementById("navHomeBtn").classList.toggle("active", state.page === "home");
@@ -565,17 +576,27 @@
 
     function renderAll() {
       renderTexts();
-      renderSmallPriceButtons();
       renderZoneCards();
       renderLatestProducts();
       renderProducts();
       updateButtonStates();
     }
 
-    document.getElementById("navLangToggle").onclick = () => {
-      state.lang = state.lang === "vi" ? "zh" : "vi";
+    document.getElementById("navLangToggle").onclick = (e) => {
+      e.stopPropagation();
+      openLangPopup();
+    };
+    document.getElementById("langOptionZh").onclick = () => {
+      state.lang = "zh";
+      closeLangPopup();
       renderAll();
     };
+    document.getElementById("langOptionVi").onclick = () => {
+      state.lang = "vi";
+      closeLangPopup();
+      renderAll();
+    };
+
     document.getElementById("categoryLayoutSingle").onclick = () => { state.layout = "single"; renderAll(); };
     document.getElementById("categoryLayoutDouble").onclick = () => { state.layout = "double"; renderAll(); };
 
@@ -615,6 +636,13 @@
         document.getElementById("categoryView").classList.add("active");
       }
       renderAll();
+    });
+
+    document.addEventListener("click", function(e) {
+      const langWrap = document.querySelector(".lang-wrap");
+      if (langWrap && !langWrap.contains(e.target)) {
+        closeLangPopup();
+      }
     });
 
     console.assert(Array.isArray(state.products), "Products should be an array");
