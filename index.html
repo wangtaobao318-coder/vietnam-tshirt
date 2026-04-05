@@ -69,16 +69,8 @@
     .zone-big { font-size: 28px; font-weight: 900; margin-top: 4px; }
     .zone-text { font-size: 14px; color: #475569; margin-top: 10px; }
     .zone-card.active .zone-small, .zone-card.active .zone-text { color: rgba(255,255,255,0.84); }
-  .products-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
-  margin-top: 16px;
-}
-
-.products-grid.single {
-  grid-template-columns: 1fr;
-}
+    .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; margin-top: 16px; }
+    .products-grid.single { grid-template-columns: 1fr; }
     .product-card {
       background: white; border: 1px solid #e5e7eb; border-radius: 20px; overflow: hidden;
       box-shadow: 0 4px 18px rgba(15, 23, 42, 0.05);
