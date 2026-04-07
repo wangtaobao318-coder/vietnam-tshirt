@@ -59,7 +59,7 @@
       flex-wrap: wrap;
       align-items: center;
     }
-    .btn, .zone-card, .card-button {
+    .btn, .zone-card, .card-button, .more-link {
       cursor: pointer;
       transition: all 0.2s ease;
       border: 1px solid #d1d5db;
@@ -69,6 +69,7 @@
       padding: 10px 14px;
       font-size: 14px;
       font-weight: 600;
+      text-decoration: none;
     }
     .btn.active, .zone-card.active {
       background: #111827;
@@ -254,11 +255,6 @@
       background: rgba(17,24,39,0.9);
       color: white;
     }
-    .badge.light {
-      background: rgba(255,255,255,0.92);
-      color: #111827;
-      border: 1px solid rgba(229,231,235,0.9);
-    }
 
     .image-eye {
       position: absolute;
@@ -338,6 +334,13 @@
       justify-content: center;
     }
 
+    .more-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 18px;
+    }
+
     .empty {
       background: white;
       border: 1px dashed #cbd5e1;
@@ -408,6 +411,8 @@
     .only-category { display: none; }
     body.category-mode .hide-on-category { display: none !important; }
     body.category-mode .only-category { display: block !important; }
+    body.new-page-mode .hide-on-new-page { display: none !important; }
+    body.new-page-mode .only-new-page { display: block !important; }
 
     .lang-popup {
       position: absolute;
@@ -517,8 +522,13 @@
       <div class="breadcrumb-text" id="breadcrumbText">当前分类：13 RMB</div>
     </div>
 
+    <div class="breadcrumb only-new-page" style="display:none;">
+      <button class="btn" id="backHomeFromNewBtn">← 返回首页</button>
+      <div class="breadcrumb-text" id="newPageBreadcrumbText">当前页面：新品上新</div>
+    </div>
+
     <div id="homeView" class="page-view active">
-      <section class="hero-grid hide-on-category">
+      <section class="hero-grid hide-on-category hide-on-new-page">
         <div class="panel">
           <h1 class="hero-title" id="heroTitle">广州T恤厂家直销</h1>
           <p class="hero-desc" id="heroDesc">广州直发，四天到仓。全市场可比价，量大价更低，支持下单订货！持续上新，每天都有不同的款！</p>
@@ -551,7 +561,7 @@
         </div>
       </section>
 
-      <section class="section" id="priceSection">
+      <section class="section hide-on-new-page" id="priceSection">
         <div class="section-head">
           <div>
             <h2 class="section-title" id="browseTitle">按价格看款</h2>
@@ -561,7 +571,7 @@
         <div class="zone-grid" id="zoneGrid"></div>
       </section>
 
-      <section class="section hide-on-category" id="newSection">
+      <section class="section hide-on-category hide-on-new-page" id="newSection">
         <div class="section-head">
           <div>
             <h2 class="section-title" id="latestTitle">最新上新</h2>
@@ -569,6 +579,7 @@
           </div>
         </div>
         <div class="products-grid" id="latestProducts"></div>
+        <a href="javascript:void(0)" class="more-link" id="viewMoreNewBtn">查看更多新品</a>
       </section>
     </div>
 
@@ -590,9 +601,28 @@
         <div id="productsWrap"></div>
       </section>
     </div>
+
+    <div id="newArrivalView" class="page-view">
+      <section class="section" style="margin-top: 20px;">
+        <div class="section-head">
+          <div>
+            <h2 class="section-title" id="newPageTitle">新品上新</h2>
+            <p class="section-desc" id="newPageDesc">这里集中展示所有新品，并按上新时间从新到旧排序。</p>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+            <div class="only-new-page" style="display:flex;gap:8px;flex-wrap:wrap;">
+              <button class="btn" id="newLayoutSingle">☰ 单排</button>
+              <button class="btn active" id="newLayoutDouble">⊞ 双排</button>
+            </div>
+            <div style="font-size:14px;color:#64748b;font-weight:600;" id="newResultInfo">新品 · 0</div>
+          </div>
+        </div>
+        <div id="newProductsWrap"></div>
+      </section>
+    </div>
   </main>
 
-  <footer class="footer hide-on-category" id="contactSection">
+  <footer class="footer hide-on-category hide-on-new-page" id="contactSection">
     <div class="footer-grid">
       <div>
         <div style="font-size:20px;font-weight:800;" id="footerBrand">档口位置</div>
@@ -647,6 +677,7 @@
         search: "搜索款号 / 颜色",
         latest: "最新上新",
         latestDesc: "优先展示最近新增的款式，方便客户快速看新货。",
+        latestMore: "查看更多新品",
         browseByPrice: "按价格看款",
         browseByPriceDesc: "点击价格区间，直接进入对应款式列表。",
         enterZone: "进入价格区",
@@ -658,19 +689,22 @@
         viewAll: "查看全部",
         productDisplay: "产品展示区",
         productDisplayDesc: "这里是当前价格分类下的全部款式。",
+        newPageTitle: "新品上新",
+        newPageDesc: "这里集中展示所有新品，并按上新时间从新到旧排序。",
         noData: "没有找到对应款式",
         contactHint: "电话 / Zalo：0708480027",
-        featured: "主推",
         newest: "新品",
         zoneTitle: "价格区",
         currentCategory: "当前分类",
+        currentNewPage: "当前页面",
         backHome: "返回首页",
         languageToggle: "语言切换",
         currency: "RMB",
         soldToday: "今日已售",
         addressTitle: "档口位置",
         addressText: "广州市荔湾区十三行路 1 号 新中国大厦 6 楼 A601B档",
-        phoneLabel: "电话"
+        phoneLabel: "电话",
+        newItemsLabel: "新品"
       },
       vi: {
         brand: "Kho Mẫu Áo Thun",
@@ -685,6 +719,7 @@
         search: "Tìm mã hàng / màu sắc",
         latest: "Mẫu mới cập nhật",
         latestDesc: "Ưu tiên hiển thị các mẫu mới thêm để khách xem hàng nhanh hơn.",
+        latestMore: "Xem thêm hàng mới",
         browseByPrice: "Xem theo mức giá",
         browseByPriceDesc: "Bấm vào từng mức giá để vào danh sách mẫu tương ứng.",
         enterZone: "Vào khu giá",
@@ -696,21 +731,31 @@
         viewAll: "Xem tất cả",
         productDisplay: "Khu trưng bày sản phẩm",
         productDisplayDesc: "Đây là toàn bộ mẫu trong khu giá hiện tại.",
+        newPageTitle: "Hàng mới mỗi ngày",
+        newPageDesc: "Hiển thị toàn bộ hàng mới và sắp xếp từ mới nhất đến cũ hơn.",
         noData: "Không tìm thấy mẫu phù hợp",
         contactHint: "Điện thoại / Zalo: 0708480027",
-        featured: "Nổi bật",
         newest: "Mới",
         zoneTitle: "Khu giá",
         currentCategory: "Phân loại hiện tại",
+        currentNewPage: "Trang hiện tại",
         backHome: "Quay lại trang chủ",
         languageToggle: "Chuyển ngôn ngữ",
         currency: "VND",
         soldToday: "Đã bán hôm nay",
         addressTitle: "Vị trí sạp hàng",
         addressText: "Sạp A601B, tầng 6, Tòa nhà Tân Trung Quốc, số 1 đường Shisanhang, quận Lệ Loan, Quảng Châu",
-        phoneLabel: "Điện thoại"
+        phoneLabel: "Điện thoại",
+        newItemsLabel: "Hàng mới"
       }
     };
+
+    function parseDateValue(dateStr) {
+      const value = (dateStr || "").trim();
+      if (!value) return 0;
+      const time = new Date(value + "T00:00:00").getTime();
+      return Number.isNaN(time) ? 0 : time;
+    }
 
     async function createProducts() {
       const response = await fetch("./products.csv");
@@ -721,19 +766,22 @@
 
       return dataLines
         .map((line, index) => {
-          const [code, basePrice, isNew] = line.split(",");
+          const [code, basePrice, isNew, createdAt] = line.split(",");
 
           return {
             id: index + 1,
-            code: code.trim(),
-            basePrice: Number(basePrice.trim()),
+            code: (code || "").trim(),
+            basePrice: Number((basePrice || "").trim()),
             colors: [],
-            isNew: isNew.trim().toUpperCase() === "TRUE",
+            isNew: ((isNew || "").trim().toUpperCase() === "TRUE"),
+            createdAt: (createdAt || "").trim(),
+            createdAtValue: parseDateValue(createdAt),
             featured: false,
-            image: `https://res.cloudinary.com/df9x8bpyj/image/upload/${code.trim()}.jpg`
+            image: `https://res.cloudinary.com/df9x8bpyj/image/upload/${(code || "").trim()}.jpg`
           };
         })
-        .filter(item => item.code);
+        .filter(item => item.code && BASE_PRICES.includes(item.basePrice))
+        .sort((a, b) => b.createdAtValue - a.createdAtValue);
     }
 
     function getDailySales() {
@@ -745,6 +793,7 @@
     const state = {
       lang: "vi",
       layout: "double",
+      newLayout: "double",
       activeBasePrice: null,
       query: "",
       products: [],
@@ -771,17 +820,28 @@
 
     function getFilteredProducts() {
       const q = state.query.trim().toLowerCase();
-      return state.products.filter(item => {
-        const matchesPrice = state.activeBasePrice == null ? true : item.basePrice === state.activeBasePrice;
-        const matchesQuery = !q
-          ? true
-          : item.code.toLowerCase().includes(q);
-        return matchesPrice && matchesQuery;
-      });
+      return [...state.products]
+        .filter(item => {
+          const matchesPrice = state.activeBasePrice == null ? true : item.basePrice === state.activeBasePrice;
+          const matchesQuery = !q ? true : item.code.toLowerCase().includes(q);
+          return matchesPrice && matchesQuery;
+        })
+        .sort((a, b) => b.createdAtValue - a.createdAtValue);
     }
 
     function getNewestProducts() {
-      return state.products.filter(item => item.isNew).slice(0, 8);
+      return [...state.products]
+        .filter(item => item.isNew)
+        .sort((a, b) => b.createdAtValue - a.createdAtValue)
+        .slice(0, 8);
+    }
+
+    function getNewArrivalPageProducts() {
+      const q = state.query.trim().toLowerCase();
+      return [...state.products]
+        .filter(item => item.isNew)
+        .filter(item => !q ? true : item.code.toLowerCase().includes(q))
+        .sort((a, b) => b.createdAtValue - a.createdAtValue);
     }
 
     function setText(id, value) {
@@ -793,8 +853,10 @@
       state.page = "home";
       state.activeBasePrice = null;
       document.body.classList.remove("category-mode");
+      document.body.classList.remove("new-page-mode");
       document.getElementById("homeView").classList.add("active");
       document.getElementById("categoryView").classList.remove("active");
+      document.getElementById("newArrivalView").classList.remove("active");
       closeLangPopup();
       renderAll();
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -804,8 +866,23 @@
       state.page = "category";
       state.activeBasePrice = basePrice;
       document.body.classList.add("category-mode");
+      document.body.classList.remove("new-page-mode");
       document.getElementById("homeView").classList.remove("active");
       document.getElementById("categoryView").classList.add("active");
+      document.getElementById("newArrivalView").classList.remove("active");
+      closeLangPopup();
+      renderAll();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function openNewArrivalPage() {
+      state.page = "new";
+      state.activeBasePrice = null;
+      document.body.classList.remove("category-mode");
+      document.body.classList.add("new-page-mode");
+      document.getElementById("homeView").classList.remove("active");
+      document.getElementById("categoryView").classList.remove("active");
+      document.getElementById("newArrivalView").classList.add("active");
       closeLangPopup();
       renderAll();
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -860,6 +937,9 @@
       setText("browseDesc", text.browseByPriceDesc);
       setText("latestTitle", text.latest);
       setText("latestDesc", text.latestDesc);
+      setText("viewMoreNewBtn", text.latestMore);
+      setText("newPageTitle", text.newPageTitle);
+      setText("newPageDesc", text.newPageDesc);
       setText("productsTitle", state.activeBasePrice == null ? text.productDisplay : `${text.zoneTitle} ${formatPrice(state.activeBasePrice)}`);
       setText("productsDesc", text.productDisplayDesc);
       setText("footerBrand", text.addressTitle);
@@ -870,8 +950,12 @@
       setText("contactZaloTag", state.lang === "zh" ? `Zalo：0708480027` : `Zalo: 0708480027`);
       document.getElementById("categoryLayoutSingle").textContent = `☰ ${state.lang === "zh" ? "单排" : "1 cột"}`;
       document.getElementById("categoryLayoutDouble").textContent = `⊞ ${state.lang === "zh" ? "双排" : "2 cột"}`;
+      document.getElementById("newLayoutSingle").textContent = `☰ ${state.lang === "zh" ? "单排" : "1 cột"}`;
+      document.getElementById("newLayoutDouble").textContent = `⊞ ${state.lang === "zh" ? "双排" : "2 cột"}`;
       document.getElementById("backHomeBtn").textContent = `← ${text.backHome}`;
+      document.getElementById("backHomeFromNewBtn").textContent = `← ${text.backHome}`;
       document.getElementById("breadcrumbText").textContent = state.activeBasePrice == null ? text.viewAll : `${text.currentCategory}：${formatPrice(state.activeBasePrice)}`;
+      document.getElementById("newPageBreadcrumbText").textContent = `${text.currentNewPage}：${text.newPageTitle}`;
       setText("statTotalValue", state.products.length);
       setText("statPriceValue", BASE_PRICES.length);
       setText("statNewValue", state.products.filter(item => item.isNew).length);
@@ -962,10 +1046,28 @@
       wrap.innerHTML = `<div class="products-grid ${state.layout === "single" ? "single" : ""}">${filtered.map(createProductCard).join("")}</div>`;
     }
 
+    function renderNewArrivalPageProducts() {
+      const text = t();
+      const wrap = document.getElementById("newProductsWrap");
+      const filtered = getNewArrivalPageProducts();
+      setText("newResultInfo", `${text.newItemsLabel} · ${filtered.length}`);
+
+      if (!filtered.length) {
+        wrap.innerHTML = `<div class="empty">${text.noData}</div>`;
+        return;
+      }
+
+      wrap.innerHTML = `<div class="products-grid ${state.newLayout === "single" ? "single" : ""}">${filtered.map(createProductCard).join("")}</div>`;
+    }
+
     function updateButtonStates() {
       document.getElementById("categoryLayoutSingle").classList.toggle("active", state.layout === "single");
       document.getElementById("categoryLayoutDouble").classList.toggle("active", state.layout === "double");
+      document.getElementById("newLayoutSingle").classList.toggle("active", state.newLayout === "single");
+      document.getElementById("newLayoutDouble").classList.toggle("active", state.newLayout === "double");
       document.getElementById("navHomeBtn").classList.toggle("active", state.page === "home");
+      document.getElementById("navPriceZone").classList.toggle("active", state.page === "category");
+      document.getElementById("navNewArrival").classList.toggle("active", state.page === "new");
     }
 
     function renderAll() {
@@ -973,6 +1075,7 @@
       renderZoneCards();
       renderLatestProducts();
       renderProducts();
+      renderNewArrivalPageProducts();
       updateButtonStates();
     }
 
@@ -1003,6 +1106,16 @@
       renderAll();
     };
 
+    document.getElementById("newLayoutSingle").onclick = () => {
+      state.newLayout = "single";
+      renderAll();
+    };
+
+    document.getElementById("newLayoutDouble").onclick = () => {
+      state.newLayout = "double";
+      renderAll();
+    };
+
     document.getElementById("navHomeBtn").onclick = () => {
       openHome();
     };
@@ -1015,10 +1128,11 @@
     };
 
     document.getElementById("navNewArrival").onclick = () => {
-      openHome();
-      setTimeout(() => {
-        document.getElementById("newSection")?.scrollIntoView({ behavior: "smooth", block: "start" });
-      }, 50);
+      openNewArrivalPage();
+    };
+
+    document.getElementById("viewMoreNewBtn").onclick = () => {
+      openNewArrivalPage();
     };
 
     document.getElementById("navContact").onclick = () => {
@@ -1029,6 +1143,7 @@
     };
 
     document.getElementById("backHomeBtn").onclick = () => openHome();
+    document.getElementById("backHomeFromNewBtn").onclick = () => openHome();
 
     document.getElementById("searchInput").addEventListener("input", function(e) {
       state.query = e.target.value;
@@ -1036,8 +1151,10 @@
         state.page = "category";
         state.activeBasePrice = null;
         document.body.classList.add("category-mode");
+        document.body.classList.remove("new-page-mode");
         document.getElementById("homeView").classList.remove("active");
         document.getElementById("categoryView").classList.add("active");
+        document.getElementById("newArrivalView").classList.remove("active");
       }
       renderAll();
     });
