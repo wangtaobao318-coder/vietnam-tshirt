@@ -15,12 +15,12 @@
       --text: #111827;
       --muted: #64748b;
       --muted-2: #475569;
-      --brand: #111827;
-      --brand-soft: #1f2937;
+      --muted-3: #94a3b8;
+      --brand: #0f172a;
+      --brand-soft: #162236;
       --danger: #dc2626;
-      --accent-bg: #fff7ed;
-      --accent-border: #fdba74;
-      --accent-text: #9a3412;
+      --chip-border: #cbd5e1;
+      --chip-bg: #ffffff;
       --shadow: 0 8px 30px rgba(15, 23, 42, 0.04);
       --shadow-card: 0 4px 18px rgba(15, 23, 42, 0.05);
       --radius-xl: 28px;
@@ -36,11 +36,7 @@
       color: var(--text);
     }
 
-    .container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 16px;
-    }
+    .container { max-width: 1280px; margin: 0 auto; padding: 16px; }
 
     .header {
       position: sticky;
@@ -83,16 +79,8 @@
       flex-shrink: 0;
     }
 
-    .brand-title {
-      font-weight: 800;
-      font-size: 18px;
-    }
-
-    .brand-subtitle {
-      color: var(--muted);
-      font-size: 12px;
-      margin-top: 4px;
-    }
+    .brand-title { font-weight: 800; font-size: 18px; }
+    .brand-subtitle { color: var(--muted); font-size: 12px; margin-top: 4px; }
 
     .nav {
       display: flex;
@@ -101,10 +89,7 @@
       align-items: center;
     }
 
-    .btn,
-    .zone-card,
-    .card-button,
-    .more-link {
+    .btn, .zone-card, .card-button, .more-link {
       cursor: pointer;
       transition: all 0.2s ease;
       border: 1px solid #d1d5db;
@@ -113,12 +98,11 @@
       border-radius: 14px;
       padding: 10px 14px;
       font-size: 14px;
-      font-weight: 600;
+      font-weight: 700;
       text-decoration: none;
     }
 
-    .btn.active,
-    .zone-card.active {
+    .btn.active, .zone-card.active {
       background: var(--brand);
       color: white;
       border-color: var(--brand);
@@ -147,18 +131,11 @@
       letter-spacing: -0.02em;
     }
 
-    .hero-desc,
-    .section-desc,
-    .footer-desc,
-    .contact-desc {
+    .hero-desc, .section-desc, .footer-desc, .contact-desc {
       color: var(--muted-2);
       line-height: 1.8;
     }
-
-    .hero-desc {
-      margin-top: 16px;
-      font-size: 16px;
-    }
+    .hero-desc { margin-top: 16px; font-size: 16px; }
 
     .stats {
       display: flex;
@@ -175,29 +152,11 @@
       min-width: 120px;
     }
 
-    .stat-label {
-      font-size: 12px;
-      color: var(--muted);
-      margin-bottom: 6px;
-    }
+    .stat-label { font-size: 12px; color: var(--muted); margin-bottom: 6px; }
+    .stat-value { font-size: 24px; font-weight: 900; }
 
-    .stat-value {
-      font-size: 24px;
-      font-weight: 900;
-    }
-
-    .control-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
-    }
-
-    .control-label {
-      font-size: 14px;
-      font-weight: 700;
-      margin-bottom: 10px;
-      color: var(--text);
-    }
+    .control-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+    .control-label { font-size: 14px; font-weight: 700; margin-bottom: 10px; color: var(--text); }
 
     .search-input {
       width: 100%;
@@ -215,9 +174,7 @@
       box-shadow: 0 0 0 3px rgba(148, 163, 184, 0.16);
     }
 
-    .section {
-      margin-top: 28px;
-    }
+    .section { margin-top: 28px; }
 
     .section-head {
       display: flex;
@@ -249,28 +206,12 @@
       box-shadow: var(--shadow-card);
     }
 
-    .zone-small {
-      font-size: 12px;
-      color: var(--muted);
-    }
-
-    .zone-big {
-      font-size: 22px;
-      font-weight: 900;
-      margin-top: 8px;
-      line-height: 1.25;
-    }
-
-    .zone-text {
-      font-size: 14px;
-      color: var(--muted-2);
-      margin-top: 10px;
-    }
+    .zone-small { font-size: 12px; color: var(--muted); }
+    .zone-big { font-size: 22px; font-weight: 900; margin-top: 8px; line-height: 1.25; }
+    .zone-text { font-size: 14px; color: var(--muted-2); margin-top: 10px; }
 
     .zone-card.active .zone-small,
-    .zone-card.active .zone-text {
-      color: rgba(255,255,255,0.84);
-    }
+    .zone-card.active .zone-text { color: rgba(255,255,255,0.84); }
 
     .products-grid {
       display: grid;
@@ -279,9 +220,7 @@
       margin-top: 16px;
     }
 
-    .products-grid.single {
-      grid-template-columns: 1fr;
-    }
+    .products-grid.single { grid-template-columns: 1fr; }
 
     .product-card {
       background: white;
@@ -310,16 +249,8 @@
       cursor: zoom-in;
     }
 
-    .product-image-trigger img {
-      pointer-events: none;
-    }
-
-    .product-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
+    .product-image-trigger img { pointer-events: none; }
+    .product-image { width: 100%; height: 100%; object-fit: cover; display: block; }
 
     .badge-wrap {
       position: absolute;
@@ -339,10 +270,7 @@
       font-weight: 700;
     }
 
-    .badge.dark {
-      background: rgba(17,24,39,0.9);
-      color: white;
-    }
+    .badge.dark { background: rgba(17,24,39,0.9); color: white; }
 
     .image-eye {
       position: absolute;
@@ -363,16 +291,12 @@
       backdrop-filter: blur(4px);
     }
 
-    .image-eye svg {
-      width: 16px;
-      height: 16px;
-      display: block;
-    }
+    .image-eye svg { width: 16px; height: 16px; display: block; }
 
     .product-body {
-      padding: 16px;
+      padding: 14px;
       display: grid;
-      gap: 14px;
+      gap: 10px;
     }
 
     .product-top {
@@ -386,12 +310,13 @@
       font-size: 12px;
       color: var(--muted);
       margin-bottom: 4px;
+      line-height: 1.3;
     }
 
     .product-code {
       font-size: 16px;
       font-weight: 800;
-      line-height: 1.4;
+      line-height: 1.35;
       word-break: break-word;
     }
 
@@ -399,61 +324,67 @@
       font-size: 18px;
       font-weight: 900;
       text-align: right;
-      line-height: 1.3;
+      line-height: 1.25;
       color: var(--danger);
       white-space: nowrap;
     }
 
     .product-highlight {
       border-top: 1px solid var(--border-soft);
-      padding-top: 12px;
+      padding-top: 10px;
       display: grid;
-      gap: 8px;
+      gap: 6px;
+      min-height: 58px;
     }
 
     .highlight-label {
       font-size: 13px;
       font-weight: 800;
-      color: var(--text);
+      color: #334155;
     }
 
     .highlight-text {
-      font-size: 14px;
-      line-height: 1.7;
-      color: var(--muted-2);
+      font-size: 13px;
+      line-height: 1.6;
+      color: #64748b;
       word-break: break-word;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      min-height: 20px;
+    }
+
+    .highlight-text.is-empty {
+      color: #94a3b8;
     }
 
     .product-links {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px 14px;
-      align-items: center;
+      gap: 10px;
       border-top: 1px solid var(--border);
-      padding-top: 12px;
+      padding-top: 10px;
     }
 
-    .inline-link {
-      border: 0;
-      background: transparent;
-      padding: 0;
-      font-size: 14px;
-      font-weight: 700;
+    .outline-link {
+      min-height: 38px;
+      border: 1px solid var(--chip-border);
+      background: var(--chip-bg);
       color: #334155;
-      text-decoration: underline;
-      text-underline-offset: 3px;
+      border-radius: 12px;
+      padding: 8px 10px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.35;
       cursor: pointer;
-      text-align: left;
-      line-height: 1.5;
+      text-align: center;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .inline-link.attr-link {
-      text-align: right;
-    }
-
-    .inline-link:hover {
-      color: var(--text);
-    }
+    .outline-link:hover { color: var(--text); border-color: #94a3b8; }
 
     .card-button {
       width: 100%;
@@ -461,26 +392,18 @@
       background: var(--brand);
       color: white;
       border-radius: 14px;
-      padding: 13px 14px;
+      padding: 12px 14px;
       font-size: 15px;
       font-weight: 800;
       text-decoration: none;
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 48px;
+      min-height: 46px;
     }
 
-    .card-button:hover {
-      background: var(--brand-soft);
-    }
-
-    .more-link {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 18px;
-    }
+    .card-button:hover { background: var(--brand-soft); }
+    .more-link { display: inline-flex; align-items: center; justify-content: center; margin-top: 18px; }
 
     .empty {
       background: white;
@@ -515,10 +438,7 @@
       padding: 18px;
     }
 
-    .contact-title {
-      font-weight: 800;
-      font-size: 16px;
-    }
+    .contact-title { font-weight: 800; font-size: 16px; }
 
     .contact-tags {
       display: flex;
@@ -547,10 +467,7 @@
       padding: 0 2px;
     }
 
-    .breadcrumb-text {
-      font-size: 14px;
-      color: var(--muted);
-    }
+    .breadcrumb-text { font-size: 14px; color: var(--muted); }
 
     .page-view { display: none; }
     .page-view.active { display: block; }
@@ -605,9 +522,7 @@
     }
 
     .image-modal.open,
-    .info-modal.open {
-      display: flex;
-    }
+    .info-modal.open { display: flex; }
 
     .image-modal-content {
       position: relative;
@@ -676,10 +591,7 @@
       word-break: break-word;
     }
 
-    .info-list {
-      display: grid;
-      gap: 12px;
-    }
+    .info-list { display: grid; gap: 12px; }
 
     .info-row {
       border: 1px solid var(--border);
@@ -705,22 +617,17 @@
 
     @media (max-width: 900px) {
       .hero-grid,
-      .footer-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-title {
-        font-size: 34px;
-      }
+      .footer-grid { grid-template-columns: 1fr; }
+      .hero-title { font-size: 34px; }
     }
 
     @media (max-width: 640px) {
-      .container {
-        padding: 12px;
-      }
+      .container { padding: 10px; }
+      .header-inner { padding: 10px 12px; }
 
-      .header-inner {
-        padding: 12px;
+      .brand-wrap {
+        width: 100%;
+        align-items: flex-start;
       }
 
       .brand-icon {
@@ -730,115 +637,129 @@
         font-size: 20px;
       }
 
-      .brand-title {
-        font-size: 17px;
-      }
-
-      .brand-subtitle {
-        font-size: 11px;
-      }
+      .brand-title { font-size: 17px; }
+      .brand-subtitle { font-size: 11px; line-height: 1.45; }
 
       .nav {
         width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 8px;
       }
 
+      .lang-wrap { width: 100%; }
+      .lang-wrap .btn { width: 100%; }
+
       .nav .btn {
-        flex: 1 1 calc(50% - 8px);
-        justify-content: center;
-        text-align: center;
-        min-height: 42px;
+        width: 100%;
+        min-height: 40px;
+        padding: 8px 10px;
+        font-size: 13px;
+        border-radius: 14px;
       }
 
       .panel {
-        padding: 18px;
-        border-radius: 22px;
-      }
-
-      .hero-title {
-        font-size: 28px;
-      }
-
-      .hero-desc,
-      .section-desc,
-      .footer-desc,
-      .contact-desc {
-        font-size: 14px;
-      }
-
-      .stats {
-        gap: 10px;
-      }
-
-      .stat {
-        flex: 1 1 calc(50% - 10px);
-        min-width: 0;
-      }
-
-      .stat-value {
-        font-size: 22px;
-      }
-
-      .section {
-        margin-top: 22px;
-      }
-
-      .section-title {
-        font-size: 24px;
-      }
-
-      .zone-grid,
-      .products-grid {
-        gap: 12px;
-      }
-
-      .product-card {
-        border-radius: 18px;
-      }
-
-      .product-body {
-        padding: 14px;
-        gap: 12px;
-      }
-
-      .product-code {
-        font-size: 15px;
-      }
-
-      .product-price {
-        font-size: 17px;
-      }
-
-      .highlight-text {
-        font-size: 13px;
-        line-height: 1.65;
-      }
-
-      .product-links {
-        gap: 8px 12px;
-      }
-
-      .inline-link {
-        font-size: 13px;
-      }
-
-      .card-button {
-        min-height: 46px;
-        font-size: 14px;
-      }
-
-      .footer-grid {
-        padding: 12px;
-      }
-
-      .contact-box {
+        padding: 16px;
         border-radius: 20px;
       }
 
-      .image-modal,
-      .info-modal {
-        padding: 14px;
+      .hero-title { font-size: 26px; }
+      .hero-desc,
+      .section-desc,
+      .footer-desc,
+      .contact-desc { font-size: 13px; }
+
+      .stats { gap: 8px; }
+      .stat {
+        flex: 1 1 calc(50% - 8px);
+        min-width: 0;
+        padding: 12px 13px;
       }
+      .stat-value { font-size: 20px; }
+
+      .section { margin-top: 18px; }
+      .section-title { font-size: 22px; }
+      .zone-grid { gap: 10px; }
+      .products-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .product-card { border-radius: 18px; }
+      .product-image-wrap { aspect-ratio: 1 / 1.18; }
+      .product-body {
+        padding: 10px;
+        gap: 8px;
+      }
+
+      .product-top {
+        gap: 8px;
+      }
+
+      .mini-label {
+        font-size: 11px;
+        margin-bottom: 3px;
+      }
+
+      .product-code {
+        font-size: 13px;
+        line-height: 1.3;
+      }
+
+      .product-price {
+        font-size: 15px;
+        line-height: 1.2;
+      }
+
+      .product-highlight {
+        padding-top: 8px;
+        gap: 4px;
+        min-height: 46px;
+      }
+
+      .highlight-label {
+        font-size: 12px;
+      }
+
+      .highlight-text {
+        font-size: 12px;
+        line-height: 1.45;
+        -webkit-line-clamp: 2;
+      }
+
+      .product-links {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        padding-top: 8px;
+      }
+
+      .outline-link {
+        min-height: 34px;
+        border-radius: 10px;
+        padding: 6px 8px;
+        font-size: 12px;
+      }
+
+      .card-button {
+        min-height: 40px;
+        font-size: 13px;
+        border-radius: 12px;
+        padding: 10px 12px;
+      }
+
+      .footer-grid { padding: 12px; }
+      .contact-box { border-radius: 20px; }
+
+      #zaloFloatButton {
+        width: 54px !important;
+        height: 54px !important;
+        right: 14px !important;
+        bottom: 82px !important;
+        font-size: 13px !important;
+      }
+
+      .image-modal,
+      .info-modal { padding: 14px; }
 
       .info-modal-card {
         width: 100%;
@@ -847,13 +768,23 @@
         padding: 18px 14px 14px;
       }
 
-      .info-modal-title {
-        font-size: 18px;
+      .info-modal-title { font-size: 18px; }
+      .info-row { padding: 11px 12px; }
+    }
+
+    @media (max-width: 420px) {
+      .products-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
       }
 
-      .info-row {
-        padding: 11px 12px;
-      }
+      .product-body { padding: 9px; gap: 7px; }
+      .product-code { font-size: 12px; }
+      .product-price { font-size: 14px; }
+      .highlight-label { font-size: 11px; }
+      .highlight-text { font-size: 11px; min-height: 16px; }
+      .outline-link { font-size: 11px; min-height: 32px; }
+      .card-button { font-size: 12px; min-height: 38px; }
     }
   </style>
 </head>
@@ -1509,6 +1440,9 @@
 
     function createProductCard(item) {
       const text = t();
+      const hasSellingPoints = !!(item.sellingPoints || "").trim();
+      const highlightClass = hasSellingPoints ? "highlight-text" : "highlight-text is-empty";
+      const highlightText = hasSellingPoints ? item.sellingPoints : "-";
 
       return `
         <div class="product-card">
@@ -1532,12 +1466,12 @@
 
             <div class="product-highlight">
               <div class="highlight-label">${text.highlight}</div>
-              <div class="highlight-text">${item.sellingPoints || "-"}</div>
+              <div class="${highlightClass}">${highlightText}</div>
             </div>
 
             <div class="product-links">
-              <button class="inline-link" type="button" onclick="openColorModal(${item.id})">${text.viewColor}</button>
-              <button class="inline-link attr-link" type="button" onclick="openAttrModal(${item.id})">${text.viewAttr}</button>
+              <button class="outline-link" type="button" onclick="openColorModal(${item.id})">${text.viewColor}</button>
+              <button class="outline-link" type="button" onclick="openAttrModal(${item.id})">${text.viewAttr}</button>
             </div>
 
             <a class="card-button" href="${ZALO_URL}" target="_blank" rel="noopener noreferrer">${text.consult}</a>
