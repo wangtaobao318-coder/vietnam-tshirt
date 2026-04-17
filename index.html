@@ -969,7 +969,6 @@
     </div>
   </div>
 
-  
   <script>
     const BASE_PRICES = [10, 11, 12, 12.5, 13, 13.5, 14, 15];
     const DISPLAY_PRICE_MAP = {
@@ -996,7 +995,7 @@
         heroTitle: "广州T恤厂家直销",
         heroDesc: "广州直发，四天到仓。全市场可比价，量大价更低，支持下单订货！持续上新，每天都有不同的款！",
         total: "总款数",
-        search: "搜索款号 / 颜色 / 卖点",
+        search: "搜索款号 / 颜色",
         latest: "最新上新",
         latestDesc: "优先展示最近新增的款式，方便客户快速看新货。",
         latestMore: "查看更多新品",
@@ -1048,7 +1047,7 @@
         heroTitle: "Nguồn hàng áo thun Quảng Châu bán trực tiếp từ xưởng",
         heroDesc: "Hàng Quảng Châu gửi thẳng, về kho trong 4 ngày. Có thể so sánh giá toàn thị trường, lấy số lượng càng lớn giá càng tốt, hỗ trợ đặt hàng! Cập nhật liên tục, mỗi ngày đều có mẫu mới!",
         total: "Tổng số mẫu",
-        search: "Tìm mã hàng / màu sắc / điểm nổi bật",
+        search: "Tìm mã hàng / màu sắc",
         latest: "Mẫu mới cập nhật",
         latestDesc: "Ưu tiên hiển thị các mẫu mới thêm để khách xem hàng nhanh hơn.",
         latestMore: "Xem thêm hàng mới",
@@ -1128,16 +1127,17 @@
       return values.map(v => v.replace(/^"|"$/g, "").trim());
     }
 
-    function normalizeDateText(value) {
-      return (value || "").trim().replace(/\//g, "-");
+    function getLocalizedValue(item, field) {
+      if (state.lang === "vi") {
+        return item[`${field}Vi`] || item[`${field}Zh`] || "";
+      }
+      return item[`${field}Zh`] || item[`${field}Vi`] || "";
     }
 
     async function createProducts() {
       const response = await fetch("./products.csv");
       const csvText = await response.text();
-      const lines = csvText.trim().split(/
-?
-/).filter(Boolean);
+      const lines = csvText.trim().split(/\r?\n/).filter(Boolean);
       const dataLines = lines.slice(1);
 
       return dataLines
@@ -1174,7 +1174,7 @@
             sellingPointsZh: (sellingPointsZh || "").trim(),
             sellingPointsVi: (sellingPointsVi || "").trim(),
             isNew: ((isNew || "").trim().toUpperCase() === "TRUE"),
-            createdAt: normalizeDateText(createdAt),
+            createdAt: (createdAt || "").trim(),
             createdAtValue: parseDateValue(createdAt),
             featured: false,
             image: `https://res.cloudinary.com/df9x8bpyj/image/upload/${(code || "").trim()}.jpg`
@@ -1205,13 +1205,6 @@
       return TRANSLATIONS[state.lang] || TRANSLATIONS.vi;
     }
 
-    function getLocalizedValue(item, field) {
-      if (state.lang === "vi") {
-        return item[`${field}Vi`] || item[`${field}Zh`] || "";
-      }
-      return item[`${field}Zh`] || item[`${field}Vi`] || "";
-    }
-
     function getDisplayPrice(basePrice) {
       return DISPLAY_PRICE_MAP[basePrice] ?? basePrice;
     }
@@ -1225,7 +1218,7 @@
       return `${Math.round(displayPrice * EXCHANGE_RATE)} ${text.currency}`;
     }
 
-    function getSearchHaystack(item) {
+    function getSearchText(item) {
       return [
         item.code,
         item.colorsZh, item.colorsVi,
@@ -1233,7 +1226,10 @@
         item.collarZh, item.collarVi,
         item.fitZh, item.fitVi,
         item.sellingPointsZh, item.sellingPointsVi
-      ].filter(Boolean).join(" ").toLowerCase();
+      ]
+        .filter(Boolean)
+        .join(" ")
+        .toLowerCase();
     }
 
     function getFilteredProducts() {
@@ -1241,7 +1237,7 @@
       return [...state.products]
         .filter(item => {
           const matchesPrice = state.activeBasePrice == null ? true : item.basePrice === state.activeBasePrice;
-          const matchesQuery = !q ? true : getSearchHaystack(item).includes(q);
+          const matchesQuery = !q ? true : getSearchText(item).includes(q);
           return matchesPrice && matchesQuery;
         })
         .sort((a, b) => b.createdAtValue - a.createdAtValue);
@@ -1258,7 +1254,7 @@
       const q = state.query.trim().toLowerCase();
       return [...state.products]
         .filter(item => item.isNew)
-        .filter(item => !q ? true : getSearchHaystack(item).includes(q))
+        .filter(item => !q ? true : getSearchText(item).includes(q))
         .sort((a, b) => b.createdAtValue - a.createdAtValue);
     }
 
@@ -1340,6 +1336,7 @@
       document.getElementById("colorModalLabel").textContent = text.colorModalLabel;
       document.getElementById("colorModalCode").textContent = `${text.productCode}${state.lang === "zh" ? "：" : ": "}${item.code}`;
       document.getElementById("colorModalValue").textContent = getLocalizedValue(item, "colors") || text.colorNote;
+
       document.getElementById("colorModal").classList.add("open");
       document.body.style.overflow = "hidden";
     }
@@ -1466,10 +1463,10 @@
 
     function createProductCard(item) {
       const text = t();
-      const localizedSellingPoints = getLocalizedValue(item, "sellingPoints");
-      const hasSellingPoints = !!localizedSellingPoints.trim();
+      const sellingPointsValue = getLocalizedValue(item, "sellingPoints");
+      const hasSellingPoints = !!sellingPointsValue.trim();
       const highlightClass = hasSellingPoints ? "highlight-text" : "highlight-text is-empty";
-      const highlightText = hasSellingPoints ? localizedSellingPoints : "-";
+      const highlightText = hasSellingPoints ? sellingPointsValue : "-";
 
       return `
         <div class="product-card">
@@ -1691,6 +1688,5 @@
       renderAll();
     });
   </script>
-
 </body>
 </html>
